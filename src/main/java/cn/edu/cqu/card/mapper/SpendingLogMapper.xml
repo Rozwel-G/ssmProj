@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.cqu.card.mapper.SpendingLogMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.SpendingLog" >
+    <id column="SPENDING_LOG_ID" property="spendingLogId" jdbcType="INTEGER" />
+    <result column="SHOP_ID" property="shopId" jdbcType="INTEGER" />
+    <result column="COM_ID" property="comId" jdbcType="INTEGER" />
+    <result column="SCORE_LOG_ID" property="scoreLogId" jdbcType="INTEGER" />
+    <result column="USER_PHONE" property="userPhone" jdbcType="CHAR" />
+    <result column="TIME" property="time" jdbcType="TIMESTAMP" />
+    <result column="MONEY" property="money" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SPENDING_LOG_ID, SHOP_ID, COM_ID, SCORE_LOG_ID, USER_PHONE, TIME, MONEY
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from spending_log
+    where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from spending_log
+    where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.SpendingLog" >
+    insert into spending_log (SPENDING_LOG_ID, SHOP_ID, COM_ID, 
+      SCORE_LOG_ID, USER_PHONE, TIME, 
+      MONEY)
+    values (#{spendingLogId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{comId,jdbcType=INTEGER}, 
+      #{scoreLogId,jdbcType=INTEGER}, #{userPhone,jdbcType=CHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{money,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.SpendingLog" >
+    insert into spending_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="spendingLogId != null" >
+        SPENDING_LOG_ID,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="comId != null" >
+        COM_ID,
+      </if>
+      <if test="scoreLogId != null" >
+        SCORE_LOG_ID,
+      </if>
+      <if test="userPhone != null" >
+        USER_PHONE,
+      </if>
+      <if test="time != null" >
+        TIME,
+      </if>
+      <if test="money != null" >
+        MONEY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="spendingLogId != null" >
+        #{spendingLogId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="comId != null" >
+        #{comId,jdbcType=INTEGER},
+      </if>
+      <if test="scoreLogId != null" >
+        #{scoreLogId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.SpendingLog" >
+    update spending_log
+    <set >
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="comId != null" >
+        COM_ID = #{comId,jdbcType=INTEGER},
+      </if>
+      <if test="scoreLogId != null" >
+        SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null" >
+        USER_PHONE = #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="time != null" >
+        TIME = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        MONEY = #{money,jdbcType=REAL},
+      </if>
+    </set>
+    where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.SpendingLog" >
+    update spending_log
+    set SHOP_ID = #{shopId,jdbcType=INTEGER},
+      COM_ID = #{comId,jdbcType=INTEGER},
+      SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER},
+      USER_PHONE = #{userPhone,jdbcType=CHAR},
+      TIME = #{time,jdbcType=TIMESTAMP},
+      MONEY = #{money,jdbcType=REAL}
+    where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
+  </update>
+</mapper>
