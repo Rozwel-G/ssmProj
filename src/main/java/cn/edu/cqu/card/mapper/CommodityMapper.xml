@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.cqu.card.mapper.CommodityMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.Commodity" >
+    <id column="COM_ID" property="comId" jdbcType="INTEGER" />
+    <result column="SHOP_ID" property="shopId" jdbcType="INTEGER" />
+    <result column="COM_NAME" property="comName" jdbcType="VARCHAR" />
+    <result column="COM_TYPE" property="comType" jdbcType="VARCHAR" />
+    <result column="COM_PRICE" property="comPrice" jdbcType="REAL" />
+    <result column="COM_PIC" property="comPic" jdbcType="VARCHAR" />
+    <result column="COM_INTRO" property="comIntro" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    COM_ID, SHOP_ID, COM_NAME, COM_TYPE, COM_PRICE, COM_PIC, COM_INTRO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where COM_ID = #{comId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commodity
+    where COM_ID = #{comId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.Commodity" >
+    insert into commodity (COM_ID, SHOP_ID, COM_NAME, 
+      COM_TYPE, COM_PRICE, COM_PIC, 
+      COM_INTRO)
+    values (#{comId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{comName,jdbcType=VARCHAR}, 
+      #{comType,jdbcType=VARCHAR}, #{comPrice,jdbcType=REAL}, #{comPic,jdbcType=VARCHAR}, 
+      #{comIntro,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.Commodity" >
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="comId != null" >
+        COM_ID,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="comName != null" >
+        COM_NAME,
+      </if>
+      <if test="comType != null" >
+        COM_TYPE,
+      </if>
+      <if test="comPrice != null" >
+        COM_PRICE,
+      </if>
+      <if test="comPic != null" >
+        COM_PIC,
+      </if>
+      <if test="comIntro != null" >
+        COM_INTRO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="comId != null" >
+        #{comId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="comName != null" >
+        #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comType != null" >
+        #{comType,jdbcType=VARCHAR},
+      </if>
+      <if test="comPrice != null" >
+        #{comPrice,jdbcType=REAL},
+      </if>
+      <if test="comPic != null" >
+        #{comPic,jdbcType=VARCHAR},
+      </if>
+      <if test="comIntro != null" >
+        #{comIntro,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.Commodity" >
+    update commodity
+    <set >
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="comName != null" >
+        COM_NAME = #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comType != null" >
+        COM_TYPE = #{comType,jdbcType=VARCHAR},
+      </if>
+      <if test="comPrice != null" >
+        COM_PRICE = #{comPrice,jdbcType=REAL},
+      </if>
+      <if test="comPic != null" >
+        COM_PIC = #{comPic,jdbcType=VARCHAR},
+      </if>
+      <if test="comIntro != null" >
+        COM_INTRO = #{comIntro,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COM_ID = #{comId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.Commodity" >
+    update commodity
+    set SHOP_ID = #{shopId,jdbcType=INTEGER},
+      COM_NAME = #{comName,jdbcType=VARCHAR},
+      COM_TYPE = #{comType,jdbcType=VARCHAR},
+      COM_PRICE = #{comPrice,jdbcType=REAL},
+      COM_PIC = #{comPic,jdbcType=VARCHAR},
+      COM_INTRO = #{comIntro,jdbcType=VARCHAR}
+    where COM_ID = #{comId,jdbcType=INTEGER}
+  </update>
+</mapper>
