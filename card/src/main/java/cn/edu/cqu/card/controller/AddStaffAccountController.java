@@ -19,22 +19,16 @@ public class AddStaffAccountController {
 	private StaffService staffService;
 	
 	
-	@RequestMapping(value="/addStaffAccount",method=RequestMethod.POST)
+	@RequestMapping(value="/shop/addStaffAccount",method=RequestMethod.POST)
 	public String addStaff(Staff staff,HttpSession session)
 	{
 		//Shop shop = (Shop) session.getAttribute("account");
 		//Integer shopId = shop.getShopId();
 		Integer shopId = 1;
 		staff.setShopId(shopId);
-		int i = staffService.insert(staff);
-		if(i<0)
-		{
-			return "error";
-		}
-		else {
-			//session.setAttribute("staffAccount", staff);
-			return "sucess";
-		}
+		staffService.insert(staff);
+		
+		return "redirect:list";
 		
 	}
 }
