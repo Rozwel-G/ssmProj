@@ -17,9 +17,9 @@
     
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 	   	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1/qicaiyun?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="url" value="jdbc:mysql://127.0.0.1/cloud?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root" />
-		<property name="password" value="ljsls123"/>
+		<property name="password" value=""/>
 	</bean>
 	   
 
@@ -38,7 +38,7 @@
          	</bean>
          </property>
         
-        <property name="typeAliasesPackage" value="cn.cqu.edu.card.model" />
+        <property name="typeAliasesPackage" value="cn.edu.cqu.card.model" />
         <property name="mapperLocations" value="classpath:cn/edu/cqu/card/mapper/*.xml" />
     </bean>
     <!-- 配置扫描器 -->

@@ -17,6 +17,17 @@
     from staff
     where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
   </select>
+  <resultMap type="cn.edu.cqu.card.model.Staff" id="staff">
+  	<id column="staffPhone" property="STAFF_PHONE"/>
+  	<result column="shopId" property="shopId"/>
+  	<result column="password" property="STAFF_PASSWORD"/>
+  	<result column="staffType" property="staffType"/>
+  </resultMap>
+   <select id="findShopStaffs" resultMap="staff" parameterType="cn.edu.cqu.card.model.Shop">
+   		SELECT STAFF_PHONE,shop_Id,STAFF_PASSWORD,staff_Type
+   		FROM staff
+   		WHERE shop_Id=#{shopId,jdbcType=VARCHAR}
+   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from staff
     where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
@@ -89,5 +100,10 @@
       STAFF_TYPE = #{staffType,jdbcType=VARCHAR},
       STAFF_PIC = #{staffPic,jdbcType=VARCHAR}
     where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
+  </update>
+  <update id="addStaff">
+  	update staff
+  	set SHOP_ID =#{shopId,jdbcType=INTEGER}
+  	where STAFF_PHONE = #{staffPhone,jdbcType=VARCHAR}
   </update>
 </mapper>
