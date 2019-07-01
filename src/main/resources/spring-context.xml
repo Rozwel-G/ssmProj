@@ -16,10 +16,10 @@
        
     
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-	   	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1/qicaiyun?useUnicode=true&amp;characterEncoding=UTF-8"/>
+	   	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1/haochijie?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root" />
-		<property name="password" value="ljsls123"/>
+		<property name="password" value="625293387"/>
 	</bean>
 	   
 
