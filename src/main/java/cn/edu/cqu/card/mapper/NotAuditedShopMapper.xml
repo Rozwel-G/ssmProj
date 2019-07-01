@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.cqu.card.mapper.NotAuditedShopMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.NotAuditedShop" >
+    <id column="AUDITED_ID" property="auditedId" jdbcType="INTEGER" />
+    <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" />
+    <result column="SHOP_TYPE" property="shopType" jdbcType="VARCHAR" />
+    <result column="SHOP_INTRO" property="shopIntro" jdbcType="VARCHAR" />
+    <result column="SHOP_PIC" property="shopPic" jdbcType="VARCHAR" />
+    <result column="SHOP_PROVINCE" property="shopProvince" jdbcType="VARCHAR" />
+    <result column="SHOP_CITY" property="shopCity" jdbcType="VARCHAR" />
+    <result column="SHOP_COUNTY" property="shopCounty" jdbcType="VARCHAR" />
+    <result column="SHOP_DETAIL" property="shopDetail" jdbcType="VARCHAR" />
+    <result column="SHOP_PHONE" property="shopPhone" jdbcType="VARCHAR" />
+    <result column="OWNER_TITLE" property="ownerTitle" jdbcType="VARCHAR" />
+    <result column="OWNER_NAME" property="ownerName" jdbcType="VARCHAR" />
+    <result column="OWNER_PHONE" property="ownerPhone" jdbcType="CHAR" />
+    <result column="OWNER_EMAIL" property="ownerEmail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    AUDITED_ID, SHOP_NAME, SHOP_TYPE, SHOP_INTRO, SHOP_PIC, SHOP_PROVINCE, SHOP_CITY, 
+    SHOP_COUNTY, SHOP_DETAIL, SHOP_PHONE, OWNER_TITLE, OWNER_NAME, OWNER_PHONE, OWNER_EMAIL
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from not_audited_shop
+    where AUDITED_ID = #{auditedId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from not_audited_shop
+    where AUDITED_ID = #{auditedId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.NotAuditedShop" >
+    insert into not_audited_shop (AUDITED_ID, SHOP_NAME, SHOP_TYPE, 
+      SHOP_INTRO, SHOP_PIC, SHOP_PROVINCE, 
+      SHOP_CITY, SHOP_COUNTY, SHOP_DETAIL, 
+      SHOP_PHONE, OWNER_TITLE, OWNER_NAME, 
+      OWNER_PHONE, OWNER_EMAIL)
+    values (#{auditedId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, #{shopType,jdbcType=VARCHAR}, 
+      #{shopIntro,jdbcType=VARCHAR}, #{shopPic,jdbcType=VARCHAR}, #{shopProvince,jdbcType=VARCHAR}, 
+      #{shopCity,jdbcType=VARCHAR}, #{shopCounty,jdbcType=VARCHAR}, #{shopDetail,jdbcType=VARCHAR}, 
+      #{shopPhone,jdbcType=VARCHAR}, #{ownerTitle,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, 
+      #{ownerPhone,jdbcType=CHAR}, #{ownerEmail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.NotAuditedShop" >
+    insert into not_audited_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="auditedId != null" >
+        AUDITED_ID,
+      </if>
+      <if test="shopName != null" >
+        SHOP_NAME,
+      </if>
+      <if test="shopType != null" >
+        SHOP_TYPE,
+      </if>
+      <if test="shopIntro != null" >
+        SHOP_INTRO,
+      </if>
+      <if test="shopPic != null" >
+        SHOP_PIC,
+      </if>
+      <if test="shopProvince != null" >
+        SHOP_PROVINCE,
+      </if>
+      <if test="shopCity != null" >
+        SHOP_CITY,
+      </if>
+      <if test="shopCounty != null" >
+        SHOP_COUNTY,
+      </if>
+      <if test="shopDetail != null" >
+        SHOP_DETAIL,
+      </if>
+      <if test="shopPhone != null" >
+        SHOP_PHONE,
+      </if>
+      <if test="ownerTitle != null" >
+        OWNER_TITLE,
+      </if>
+      <if test="ownerName != null" >
+        OWNER_NAME,
+      </if>
+      <if test="ownerPhone != null" >
+        OWNER_PHONE,
+      </if>
+      <if test="ownerEmail != null" >
+        OWNER_EMAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="auditedId != null" >
+        #{auditedId,jdbcType=INTEGER},
+      </if>
+      <if test="shopName != null" >
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopType != null" >
+        #{shopType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopIntro != null" >
+        #{shopIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPic != null" >
+        #{shopPic,jdbcType=VARCHAR},
+      </if>
+      <if test="shopProvince != null" >
+        #{shopProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCity != null" >
+        #{shopCity,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCounty != null" >
+        #{shopCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDetail != null" >
+        #{shopDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPhone != null" >
+        #{shopPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerTitle != null" >
+        #{ownerTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null" >
+        #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhone != null" >
+        #{ownerPhone,jdbcType=CHAR},
+      </if>
+      <if test="ownerEmail != null" >
+        #{ownerEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.NotAuditedShop" >
+    update not_audited_shop
+    <set >
+      <if test="shopName != null" >
+        SHOP_NAME = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopType != null" >
+        SHOP_TYPE = #{shopType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopIntro != null" >
+        SHOP_INTRO = #{shopIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPic != null" >
+        SHOP_PIC = #{shopPic,jdbcType=VARCHAR},
+      </if>
+      <if test="shopProvince != null" >
+        SHOP_PROVINCE = #{shopProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCity != null" >
+        SHOP_CITY = #{shopCity,jdbcType=VARCHAR},
+      </if>
+      <if test="shopCounty != null" >
+        SHOP_COUNTY = #{shopCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDetail != null" >
+        SHOP_DETAIL = #{shopDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="shopPhone != null" >
+        SHOP_PHONE = #{shopPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerTitle != null" >
+        OWNER_TITLE = #{ownerTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null" >
+        OWNER_NAME = #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerPhone != null" >
+        OWNER_PHONE = #{ownerPhone,jdbcType=CHAR},
+      </if>
+      <if test="ownerEmail != null" >
+        OWNER_EMAIL = #{ownerEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AUDITED_ID = #{auditedId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.NotAuditedShop" >
+    update not_audited_shop
+    set SHOP_NAME = #{shopName,jdbcType=VARCHAR},
+      SHOP_TYPE = #{shopType,jdbcType=VARCHAR},
+      SHOP_INTRO = #{shopIntro,jdbcType=VARCHAR},
+      SHOP_PIC = #{shopPic,jdbcType=VARCHAR},
+      SHOP_PROVINCE = #{shopProvince,jdbcType=VARCHAR},
+      SHOP_CITY = #{shopCity,jdbcType=VARCHAR},
+      SHOP_COUNTY = #{shopCounty,jdbcType=VARCHAR},
+      SHOP_DETAIL = #{shopDetail,jdbcType=VARCHAR},
+      SHOP_PHONE = #{shopPhone,jdbcType=VARCHAR},
+      OWNER_TITLE = #{ownerTitle,jdbcType=VARCHAR},
+      OWNER_NAME = #{ownerName,jdbcType=VARCHAR},
+      OWNER_PHONE = #{ownerPhone,jdbcType=CHAR},
+      OWNER_EMAIL = #{ownerEmail,jdbcType=VARCHAR}
+    where AUDITED_ID = #{auditedId,jdbcType=INTEGER}
+  </update>
+</mapper>
