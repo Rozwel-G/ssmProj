@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.cqu.card.mapper.ScoreLogMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.ScoreLog" >
+    <id column="SCORE_LOG_ID" property="scoreLogId" jdbcType="INTEGER" />
+    <result column="USER_PHONE" property="userPhone" jdbcType="CHAR" />
+    <result column="SCORE_LOG_TIME" property="scoreLogTime" jdbcType="TIMESTAMP" />
+    <result column="SCORE_LOG_SCORE" property="scoreLogScore" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SCORE_LOG_ID, USER_PHONE, SCORE_LOG_TIME, SCORE_LOG_SCORE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from score_log
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from score_log
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.ScoreLog" >
+    insert into score_log (SCORE_LOG_ID, USER_PHONE, SCORE_LOG_TIME, 
+      SCORE_LOG_SCORE)
+    values (#{scoreLogId,jdbcType=INTEGER}, #{userPhone,jdbcType=CHAR}, #{scoreLogTime,jdbcType=TIMESTAMP}, 
+      #{scoreLogScore,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.ScoreLog" >
+    insert into score_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scoreLogId != null" >
+        SCORE_LOG_ID,
+      </if>
+      <if test="userPhone != null" >
+        USER_PHONE,
+      </if>
+      <if test="scoreLogTime != null" >
+        SCORE_LOG_TIME,
+      </if>
+      <if test="scoreLogScore != null" >
+        SCORE_LOG_SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scoreLogId != null" >
+        #{scoreLogId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="scoreLogTime != null" >
+        #{scoreLogTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scoreLogScore != null" >
+        #{scoreLogScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.ScoreLog" >
+    update score_log
+    <set >
+      <if test="userPhone != null" >
+        USER_PHONE = #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="scoreLogTime != null" >
+        SCORE_LOG_TIME = #{scoreLogTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scoreLogScore != null" >
+        SCORE_LOG_SCORE = #{scoreLogScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.ScoreLog" >
+    update score_log
+    set USER_PHONE = #{userPhone,jdbcType=CHAR},
+      SCORE_LOG_TIME = #{scoreLogTime,jdbcType=TIMESTAMP},
+      SCORE_LOG_SCORE = #{scoreLogScore,jdbcType=INTEGER}
+    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+  </update>
+</mapper>

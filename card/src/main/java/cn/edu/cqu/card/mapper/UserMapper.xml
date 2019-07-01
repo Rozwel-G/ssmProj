@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.cqu.card.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.User" >
+    <id column="USER_PHONE" property="userPhone" jdbcType="CHAR" />
+    <result column="USER_PASSWORD" property="userPassword" jdbcType="VARCHAR" />
+    <result column="USER_NICK_NAME" property="userNickName" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_SEX" property="userSex" jdbcType="CHAR" />
+    <result column="USER_ID_TYPE" property="userIdType" jdbcType="VARCHAR" />
+    <result column="USER_ID_NUMBER" property="userIdNumber" jdbcType="VARCHAR" />
+    <result column="USER_PROVINCE" property="userProvince" jdbcType="VARCHAR" />
+    <result column="USER_CITY" property="userCity" jdbcType="VARCHAR" />
+    <result column="USER_COUNTY" property="userCounty" jdbcType="VARCHAR" />
+    <result column="USER_DETIAL" property="userDetial" jdbcType="VARCHAR" />
+    <result column="USER_EMAIL" property="userEmail" jdbcType="VARCHAR" />
+    <result column="USER_PIC" property="userPic" jdbcType="VARCHAR" />
+    <result column="USER_BALANCE" property="userBalance" jdbcType="REAL" />
+    <result column="USER_SCORE" property="userScore" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_PHONE, USER_PASSWORD, USER_NICK_NAME, USER_NAME, USER_SEX, USER_ID_TYPE, USER_ID_NUMBER, 
+    USER_PROVINCE, USER_CITY, USER_COUNTY, USER_DETIAL, USER_EMAIL, USER_PIC, USER_BALANCE, 
+    USER_SCORE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where USER_PHONE = #{userPhone,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where USER_PHONE = #{userPhone,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.User" >
+    insert into user (USER_PHONE, USER_PASSWORD, USER_NICK_NAME, 
+      USER_NAME, USER_SEX, USER_ID_TYPE, 
+      USER_ID_NUMBER, USER_PROVINCE, USER_CITY, 
+      USER_COUNTY, USER_DETIAL, USER_EMAIL, 
+      USER_PIC, USER_BALANCE, USER_SCORE
+      )
+    values (#{userPhone,jdbcType=CHAR}, #{userPassword,jdbcType=VARCHAR}, #{userNickName,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userSex,jdbcType=CHAR}, #{userIdType,jdbcType=VARCHAR}, 
+      #{userIdNumber,jdbcType=VARCHAR}, #{userProvince,jdbcType=VARCHAR}, #{userCity,jdbcType=VARCHAR}, 
+      #{userCounty,jdbcType=VARCHAR}, #{userDetial,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, 
+      #{userPic,jdbcType=VARCHAR}, #{userBalance,jdbcType=REAL}, #{userScore,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userPhone != null" >
+        USER_PHONE,
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD,
+      </if>
+      <if test="userNickName != null" >
+        USER_NICK_NAME,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userSex != null" >
+        USER_SEX,
+      </if>
+      <if test="userIdType != null" >
+        USER_ID_TYPE,
+      </if>
+      <if test="userIdNumber != null" >
+        USER_ID_NUMBER,
+      </if>
+      <if test="userProvince != null" >
+        USER_PROVINCE,
+      </if>
+      <if test="userCity != null" >
+        USER_CITY,
+      </if>
+      <if test="userCounty != null" >
+        USER_COUNTY,
+      </if>
+      <if test="userDetial != null" >
+        USER_DETIAL,
+      </if>
+      <if test="userEmail != null" >
+        USER_EMAIL,
+      </if>
+      <if test="userPic != null" >
+        USER_PIC,
+      </if>
+      <if test="userBalance != null" >
+        USER_BALANCE,
+      </if>
+      <if test="userScore != null" >
+        USER_SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null" >
+        #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userIdType != null" >
+        #{userIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="userIdNumber != null" >
+        #{userIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userProvince != null" >
+        #{userProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userCity != null" >
+        #{userCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userCounty != null" >
+        #{userCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="userDetial != null" >
+        #{userDetial,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userPic != null" >
+        #{userPic,jdbcType=VARCHAR},
+      </if>
+      <if test="userBalance != null" >
+        #{userBalance,jdbcType=REAL},
+      </if>
+      <if test="userScore != null" >
+        #{userScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.User" >
+    update user
+    <set >
+      <if test="userPassword != null" >
+        USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickName != null" >
+        USER_NICK_NAME = #{userNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        USER_SEX = #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userIdType != null" >
+        USER_ID_TYPE = #{userIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="userIdNumber != null" >
+        USER_ID_NUMBER = #{userIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userProvince != null" >
+        USER_PROVINCE = #{userProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userCity != null" >
+        USER_CITY = #{userCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userCounty != null" >
+        USER_COUNTY = #{userCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="userDetial != null" >
+        USER_DETIAL = #{userDetial,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userPic != null" >
+        USER_PIC = #{userPic,jdbcType=VARCHAR},
+      </if>
+      <if test="userBalance != null" >
+        USER_BALANCE = #{userBalance,jdbcType=REAL},
+      </if>
+      <if test="userScore != null" >
+        USER_SCORE = #{userScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where USER_PHONE = #{userPhone,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.User" >
+    update user
+    set USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      USER_NICK_NAME = #{userNickName,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_SEX = #{userSex,jdbcType=CHAR},
+      USER_ID_TYPE = #{userIdType,jdbcType=VARCHAR},
+      USER_ID_NUMBER = #{userIdNumber,jdbcType=VARCHAR},
+      USER_PROVINCE = #{userProvince,jdbcType=VARCHAR},
+      USER_CITY = #{userCity,jdbcType=VARCHAR},
+      USER_COUNTY = #{userCounty,jdbcType=VARCHAR},
+      USER_DETIAL = #{userDetial,jdbcType=VARCHAR},
+      USER_EMAIL = #{userEmail,jdbcType=VARCHAR},
+      USER_PIC = #{userPic,jdbcType=VARCHAR},
+      USER_BALANCE = #{userBalance,jdbcType=REAL},
+      USER_SCORE = #{userScore,jdbcType=INTEGER}
+    where USER_PHONE = #{userPhone,jdbcType=CHAR}
+  </update>
+</mapper>

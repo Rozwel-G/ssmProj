@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.cqu.card.mapper.StaffMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.Staff" >
+    <id column="STAFF_PHONE" property="staffPhone" jdbcType="CHAR" />
+    <result column="SHOP_ID" property="shopId" jdbcType="INTEGER" />
+    <result column="STAFF_PASSWORD" property="staffPassword" jdbcType="VARCHAR" />
+    <result column="STAFF_TYPE" property="staffType" jdbcType="VARCHAR" />
+    <result column="STAFF_PIC" property="staffPic" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STAFF_PHONE, SHOP_ID, STAFF_PASSWORD, STAFF_TYPE, STAFF_PIC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from staff
+    where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
+  </select>
+  <resultMap type="cn.edu.cqu.card.model.Staff" id="staff">
+  	<id column="staffPhone" property="STAFF_PHONE"/>
+  	<result column="shopId" property="shopId"/>
+  	<result column="password" property="STAFF_PASSWORD"/>
+  	<result column="staffType" property="staffType"/>
+  </resultMap>
+   <select id="findShopStaffs" resultMap="staff" parameterType="cn.edu.cqu.card.model.Shop">
+   		SELECT STAFF_PHONE,shop_Id,STAFF_PASSWORD,staff_Type
+   		FROM staff
+   		WHERE shop_Id=#{shopId,jdbcType=VARCHAR}
+   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from staff
+    where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.Staff" >
+    insert into staff (STAFF_PHONE, SHOP_ID, STAFF_PASSWORD, 
+      STAFF_TYPE, STAFF_PIC)
+    values (#{staffPhone,jdbcType=CHAR}, #{shopId,jdbcType=INTEGER}, #{staffPassword,jdbcType=VARCHAR}, 
+      #{staffType,jdbcType=VARCHAR}, #{staffPic,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.Staff" >
+    insert into staff
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="staffPhone != null" >
+        STAFF_PHONE,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="staffPassword != null" >
+        STAFF_PASSWORD,
+      </if>
+      <if test="staffType != null" >
+        STAFF_TYPE,
+      </if>
+      <if test="staffPic != null" >
+        STAFF_PIC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="staffPhone != null" >
+        #{staffPhone,jdbcType=CHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="staffPassword != null" >
+        #{staffPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="staffType != null" >
+        #{staffType,jdbcType=VARCHAR},
+      </if>
+      <if test="staffPic != null" >
+        #{staffPic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.Staff" >
+    update staff
+    <set >
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="staffPassword != null" >
+        STAFF_PASSWORD = #{staffPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="staffType != null" >
+        STAFF_TYPE = #{staffType,jdbcType=VARCHAR},
+      </if>
+      <if test="staffPic != null" >
+        STAFF_PIC = #{staffPic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.Staff" >
+    update staff
+    set SHOP_ID = #{shopId,jdbcType=INTEGER},
+      STAFF_PASSWORD = #{staffPassword,jdbcType=VARCHAR},
+      STAFF_TYPE = #{staffType,jdbcType=VARCHAR},
+      STAFF_PIC = #{staffPic,jdbcType=VARCHAR}
+    where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
+  </update>
+  <update id="addStaff">
+  	update staff
+  	set SHOP_ID =#{shopId,jdbcType=INTEGER}
+  	where STAFF_PHONE = #{staffPhone,jdbcType=VARCHAR}
+  </update>
+</mapper>
