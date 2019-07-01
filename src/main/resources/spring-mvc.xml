@@ -19,7 +19,10 @@
 	<context:component-scan base-package="cn.edu.cqu.card.controller" />
 	
 	<!-- 拦截器 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 2f550fe14f262870f5cc05cfe91c4fcd65fce9a6
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*" />
@@ -27,8 +30,8 @@
 			<bean class="cn.edu.cqu.card.interceptor.AuthInterceptor" ></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
 	-->
+	
 	
 	<!-- 视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

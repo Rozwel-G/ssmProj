@@ -114,4 +114,16 @@
       MONEY = #{money,jdbcType=REAL}
     where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
   </update>
+  <select id="selectByShopId" resultType="cn.edu.cqu.card.model.SpendingLog">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from spending_log
+  	where SHOP_ID = #{value}
+  </select>
+  <select id="selectByShopIdAndTime" resultType="cn.edu.cqu.card.model.SpendingLog">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from spending_log
+  	where SHOP_ID = #{shopId} and TIME between #{begin} and #{end}
+  </select>
 </mapper>

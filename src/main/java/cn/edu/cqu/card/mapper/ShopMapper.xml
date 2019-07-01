@@ -196,4 +196,20 @@
       OWNER_EMAIL = #{ownerEmail,jdbcType=VARCHAR}
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </update>
+    <select id="searchByNameKeyword" parameterType="String" resultType="cn.edu.cqu.card.model.Shop">
+    select
+  	<include refid="Base_Column_List" />
+  	from shop
+  	where SHOP_NAME like concat("%",#{value},"%")
+  </select>
+  <select id="searchByNameAndArea" resultType="cn.edu.cqu.card.model.Shop">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from shop
+  	where SHOP_NAME like concat("%",#{name},"%")
+  	  and SHOP_PROVINCE like concat("%",#{province},"%")
+  	  and SHOP_CITY like concat("%",#{city},"%")
+  	  and SHOP_COUNTY like concat("%",#{county},"%")
+  	  and SHOP_DETAIL like concat("%",#{detail},"%")
+  </select>
 </mapper>
