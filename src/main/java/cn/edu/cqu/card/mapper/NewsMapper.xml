@@ -1,106 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.edu.cqu.card.mapper.NewsMapper" >
-  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.News" >
-    <id column="NEWS_ID" property="newsId" jdbcType="INTEGER" />
-    <result column="ADMIN_PHONE" property="adminPhone" jdbcType="CHAR" />
-    <result column="NEWS_TITLE" property="newsTitle" jdbcType="VARCHAR" />
-    <result column="NEWS_TIME" property="newsTime" jdbcType="TIMESTAMP" />
-    <result column="NEWS_CONTENT" property="newsContent" jdbcType="VARCHAR" />
-    <result column="NEWS_PIC" property="newsPic" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    NEWS_ID, ADMIN_PHONE, NEWS_TITLE, NEWS_TIME, NEWS_CONTENT, NEWS_PIC
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from news
-    where NEWS_ID = #{newsId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from news
-    where NEWS_ID = #{newsId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="cn.edu.cqu.card.model.News" >
-    insert into news (NEWS_ID, ADMIN_PHONE, NEWS_TITLE, 
-      NEWS_TIME, NEWS_CONTENT, NEWS_PIC
-      )
-    values (#{newsId,jdbcType=INTEGER}, #{adminPhone,jdbcType=CHAR}, #{newsTitle,jdbcType=VARCHAR}, 
-      #{newsTime,jdbcType=TIMESTAMP}, #{newsContent,jdbcType=VARCHAR}, #{newsPic,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.News" >
-    insert into news
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="newsId != null" >
-        NEWS_ID,
-      </if>
-      <if test="adminPhone != null" >
-        ADMIN_PHONE,
-      </if>
-      <if test="newsTitle != null" >
-        NEWS_TITLE,
-      </if>
-      <if test="newsTime != null" >
-        NEWS_TIME,
-      </if>
-      <if test="newsContent != null" >
-        NEWS_CONTENT,
-      </if>
-      <if test="newsPic != null" >
-        NEWS_PIC,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="newsId != null" >
-        #{newsId,jdbcType=INTEGER},
-      </if>
-      <if test="adminPhone != null" >
-        #{adminPhone,jdbcType=CHAR},
-      </if>
-      <if test="newsTitle != null" >
-        #{newsTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="newsTime != null" >
-        #{newsTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="newsContent != null" >
-        #{newsContent,jdbcType=VARCHAR},
-      </if>
-      <if test="newsPic != null" >
-        #{newsPic,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.News" >
-    update news
-    <set >
-      <if test="adminPhone != null" >
-        ADMIN_PHONE = #{adminPhone,jdbcType=CHAR},
-      </if>
-      <if test="newsTitle != null" >
-        NEWS_TITLE = #{newsTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="newsTime != null" >
-        NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="newsContent != null" >
-        NEWS_CONTENT = #{newsContent,jdbcType=VARCHAR},
-      </if>
-      <if test="newsPic != null" >
-        NEWS_PIC = #{newsPic,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where NEWS_ID = #{newsId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.News" >
-    update news
-    set ADMIN_PHONE = #{adminPhone,jdbcType=CHAR},
-      NEWS_TITLE = #{newsTitle,jdbcType=VARCHAR},
-      NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP},
-      NEWS_CONTENT = #{newsContent,jdbcType=VARCHAR},
-      NEWS_PIC = #{newsPic,jdbcType=VARCHAR}
-    where NEWS_ID = #{newsId,jdbcType=INTEGER}
-  </update>
+<mapper namespace="cn.edu.cqu.card.mapper.NewsMapper">
+	<resultMap id="BaseResultMap"
+		type="cn.edu.cqu.card.model.News">
+		<id column="NEWS_ID" property="newsId" jdbcType="INTEGER" />
+		<result column="ADMIN_PHONE" property="adminPhone"
+			jdbcType="CHAR" />
+		<result column="NEWS_TITLE" property="newsTitle"
+			jdbcType="VARCHAR" />
+		<result column="NEWS_TIME" property="newsTime"
+			jdbcType="TIMESTAMP" />
+		<result column="NEWS_CONTENT" property="newsContent"
+			jdbcType="VARCHAR" />
+		<result column="NEWS_PIC" property="newsPic" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		NEWS_ID, ADMIN_PHONE, NEWS_TITLE, NEWS_TIME, NEWS_CONTENT, NEWS_PIC
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from news
+		where NEWS_ID = #{newsId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from news
+		where NEWS_ID = #{newsId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="cn.edu.cqu.card.model.News">
+		insert into news (NEWS_ID, ADMIN_PHONE, NEWS_TITLE,
+		NEWS_TIME, NEWS_CONTENT, NEWS_PIC
+		)
+		values (#{newsId,jdbcType=INTEGER}, #{adminPhone,jdbcType=CHAR},
+		#{newsTitle,jdbcType=VARCHAR},
+		#{newsTime,jdbcType=TIMESTAMP}, #{newsContent,jdbcType=VARCHAR}, #{newsPic,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective"
+		parameterType="cn.edu.cqu.card.model.News">
+		insert into news
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="newsId != null">
+				NEWS_ID,
+			</if>
+			<if test="adminPhone != null">
+				ADMIN_PHONE,
+			</if>
+			<if test="newsTitle != null">
+				NEWS_TITLE,
+			</if>
+			<if test="newsTime != null">
+				NEWS_TIME,
+			</if>
+			<if test="newsContent != null">
+				NEWS_CONTENT,
+			</if>
+			<if test="newsPic != null">
+				NEWS_PIC,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="newsId != null">
+				#{newsId,jdbcType=INTEGER},
+			</if>
+			<if test="adminPhone != null">
+				#{adminPhone,jdbcType=CHAR},
+			</if>
+			<if test="newsTitle != null">
+				#{newsTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="newsTime != null">
+				#{newsTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsContent != null">
+				#{newsContent,jdbcType=VARCHAR},
+			</if>
+			<if test="newsPic != null">
+				#{newsPic,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="cn.edu.cqu.card.model.News">
+		update news
+		<set>
+			<if test="adminPhone != null">
+				ADMIN_PHONE = #{adminPhone,jdbcType=CHAR},
+			</if>
+			<if test="newsTitle != null">
+				NEWS_TITLE = #{newsTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="newsTime != null">
+				NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="newsContent != null">
+				NEWS_CONTENT = #{newsContent,jdbcType=VARCHAR},
+			</if>
+			<if test="newsPic != null">
+				NEWS_PIC = #{newsPic,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where NEWS_ID = #{newsId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="cn.edu.cqu.card.model.News">
+		update news
+		set ADMIN_PHONE = #{adminPhone,jdbcType=CHAR},
+		NEWS_TITLE = #{newsTitle,jdbcType=VARCHAR},
+		NEWS_TIME = #{newsTime,jdbcType=TIMESTAMP},
+		NEWS_CONTENT = #{newsContent,jdbcType=VARCHAR},
+		NEWS_PIC = #{newsPic,jdbcType=VARCHAR}
+		where NEWS_ID = #{newsId,jdbcType=INTEGER}
+	</update>
+	<select id="selectNews" resultType="cn.edu.cqu.card.model.News">
+		select
+		<include refid="Base_Column_List" />
+		from news
+		order by NEWS_TIME
+	</select>
 </mapper>
