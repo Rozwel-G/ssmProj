@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.edu.cqu.card.model.Staff;
-import cn.edu.cqu.card.service.Impl.StaffService;
+import cn.edu.cqu.card.service.StaffService;
 
 @Controller
 public class AddStaffAccountController {

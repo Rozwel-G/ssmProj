@@ -1,4 +1,4 @@
-package cn.edu.cqu.card.service.Impl;
+package cn.edu.cqu.card.service;
 
 import java.util.List;
 

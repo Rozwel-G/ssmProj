@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.edu.cqu.card.model.Staff;
-import cn.edu.cqu.card.service.Impl.StaffService;
+import cn.edu.cqu.card.service.StaffService;
 
 @Controller
 public class DeleteStaffContrpller {

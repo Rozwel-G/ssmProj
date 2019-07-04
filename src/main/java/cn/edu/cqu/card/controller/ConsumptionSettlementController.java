@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 import cn.edu.cqu.card.model.Shop;
+import cn.edu.cqu.card.model.User;
 import cn.edu.cqu.card.service.ConsumptionSettlementService;
 
 @Controller
@@ -20,11 +21,14 @@ public class ConsumptionSettlementController {
 	public String login(HttpSession session) {
 		Shop shop = new Shop();
 		shop.setShopId(1);
-		
+		User user = new User();
+		user.setUserPhone("17712345678");
+		session.setAttribute("user", user);
 		session.setAttribute("shop", shop);
 		
 		return "settleAccounts";
 	}
+
 	
 	@PutMapping("/settle")
 	public String settle(HttpSession session,String userPhone,float price) {

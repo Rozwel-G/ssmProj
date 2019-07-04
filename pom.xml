@@ -157,21 +157,20 @@
 		    <version>2.4</version>
 		</dependency>
 	</dependencies>
-	<build>
-		<finalName>mybatis01</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-		</resources>
-	</build>
+
+  <build>
+    <finalName>card</finalName>
+		<plugins>
+			<plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <configurationFile>src/test/resources/generatorConfig.xml</configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+            </plugin>
+		</plugins>
+  </build>
 </project>
