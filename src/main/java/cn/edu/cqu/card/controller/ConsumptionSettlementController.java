@@ -23,7 +23,7 @@ public class ConsumptionSettlementController {
 		
 		session.setAttribute("shop", shop);
 		
-		return "settleAccounts";
+		return "NewFile";
 	}
 	
 	@PutMapping("/settle")
