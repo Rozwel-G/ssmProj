@@ -1,5 +1,7 @@
 package cn.edu.cqu.card.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +17,8 @@ public class ShopController {
 	private ShopService shopService;
 	
 	@RequestMapping(value = "/updateShopInformation",method = RequestMethod.GET)
-	public String showShop(Model model) {
-		Shop s = shopService.showShop(1);
+	public String showShop(Model model,HttpSession session) {
+		Shop s = shopService.showShop(((Shop)session.getAttribute("shop")).getShopId());
 		model.addAttribute("shop", s);
 		return "updateShopInformation";
 	}

@@ -1,5 +1,7 @@
 package cn.edu.cqu.card.mapper;
 
+import java.util.List;
+
 import cn.edu.cqu.card.model.NotAuditedShop;
 
 public interface NotAuditedShopMapper {
@@ -14,4 +16,6 @@ public interface NotAuditedShopMapper {
     int updateByPrimaryKeySelective(NotAuditedShop record);
 
     int updateByPrimaryKey(NotAuditedShop record);
+    
+    List<NotAuditedShop> findAll();
 }

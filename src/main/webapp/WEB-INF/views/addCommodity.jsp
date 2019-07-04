@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="/addCommodity" method="post">
-		商家编号：<input type="text" id="shopID" name="shopId" value="${requestScope.shopId}" readonly="true"><br/>
+		<!-- 商家编号：<input type="text" id="shopID" name="shopId" value="${requestScope.shopId}" readonly="true"><br/> -->
 		商品名称：<input type="text" id="Name" name="comName"><span></span><br/>
 		商品类型：<input type="text" name="comType"><br/>
 		商品介绍：<input type="text" name="comIntro"><br/>
@@ -29,7 +29,7 @@
 					if( data == true ){
 						input2.next("span").html("该商品本店已存在").css("color", "red");
 					} 
-				}, "json");
+				}, "json"); 
 				
 			});
 			

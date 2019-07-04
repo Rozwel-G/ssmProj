@@ -2,6 +2,8 @@ package cn.edu.cqu.card.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.cqu.card.model.Commodity;
+import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.service.CommodityService;
 
 @Controller
@@ -22,20 +25,21 @@ public class CommodityController {
 	private CommodityService commodityService;
 	
 	@RequestMapping(value = "/addCommodity",method = RequestMethod.GET)
-	public String show(Model model) {
-		model.addAttribute("shopId", 1);
+	public String show() {
 		return "addCommodity";
 	}
 	
 	@RequestMapping(value = "/addCommodity",method = RequestMethod.POST)
-	public String add(Commodity commodity,int shopId) {
+	public String add(Commodity commodity,HttpSession session) {
+		commodity.setShopId(((Shop)session.getAttribute("shop")).getShopId());
 		commodityService.addCommodity(commodity);
 		return "NewFile";
 	}
 	
 	@RequestMapping(value = "/comList",method = RequestMethod.GET)
-	public String showCommodities(Model model) {
-		List<Commodity> commodities = commodityService.commodities(1);
+	public String showCommodities(Model model,HttpSession session) {
+		Shop shop = (Shop)session.getAttribute("shop");
+		List<Commodity> commodities = commodityService.commodities(shop.getShopId());
 		model.addAttribute("commodities", commodities);
 		return "comList";
 	}
