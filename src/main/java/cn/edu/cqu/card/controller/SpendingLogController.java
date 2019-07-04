@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import cn.edu.cqu.card.model.SpendingLog;
+import cn.edu.cqu.card.model.User;
 import cn.edu.cqu.card.service.SpendingLogService;
 
 @Controller
@@ -34,10 +35,10 @@ public class SpendingLogController {
 	}
 	// 查询当日
 	@RequestMapping(value = "/spendingLog/today", method = RequestMethod.GET)
-	public String listTodaySpendingLog(Model model) {
+	public String listTodaySpendingLog(Model model, HttpSession session) {
 
 		// 实际应该使用session获取
-		List<SpendingLog> spendingLogs = spendingLogService.getTodaySpendingLogs("17712345678");
+		List<SpendingLog> spendingLogs = spendingLogService.getTodaySpendingLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", spendingLogService.computeTotalMoney(spendingLogs));
 		return "/spendingLog/spending";
@@ -45,10 +46,10 @@ public class SpendingLogController {
 
 	// 查询总共
 	@RequestMapping(value = "/spendingLog/total", method = RequestMethod.GET)
-	public String listTotalSpendingLog(Model model) {
+	public String listTotalSpendingLog(Model model, HttpSession session) {
 
 		// 实际应该使用session获取
-		List<SpendingLog> spendingLogs = spendingLogService.getAllSpendingLogs("17712345678");
+		List<SpendingLog> spendingLogs = spendingLogService.getAllSpendingLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", spendingLogService.computeTotalMoney(spendingLogs));
 		return "/spendingLog/spending";
@@ -58,7 +59,7 @@ public class SpendingLogController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/spendingLog/time", method = RequestMethod.POST)
 	public String listTotalSpendingLog(@RequestParam("begin") String begin, @RequestParam("end") String end,
-			Model model) {
+			Model model, HttpSession session) {
 		// 对日期进行处理
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -72,7 +73,7 @@ public class SpendingLogController {
 			endDate.setSeconds(59);
 
 			// 实际应该使用session获取
-			List<SpendingLog> spendingLogs = spendingLogService.getSpendingLogs("17712345678", beginDate, endDate);
+			List<SpendingLog> spendingLogs = spendingLogService.getSpendingLogs(((User)session.getAttribute("user")).getUserPhone(), beginDate, endDate);
 			model.addAttribute("spendingLogs", spendingLogs);
 			model.addAttribute("totalMoney", spendingLogService.computeTotalMoney(spendingLogs));
 			return "/spendingLog/spending";

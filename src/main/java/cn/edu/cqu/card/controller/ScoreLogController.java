@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.edu.cqu.card.model.ScoreLog;
+import cn.edu.cqu.card.model.User;
 import cn.edu.cqu.card.service.ScoreLogService;
 
 @Controller
@@ -31,10 +34,10 @@ public class ScoreLogController {
 	}
 	// 查询当日
 	@RequestMapping(value = "/scoreLog/today", method = RequestMethod.GET)
-	public String listTodayScoreLog(Model model) {
+	public String listTodayScoreLog(Model model, HttpSession session) {
 
 		// 实际应该使用session获取
-		List<ScoreLog> scoreLogs = scoreLogService.getTodayScoreLogs("17712345678");
+		List<ScoreLog> scoreLogs = scoreLogService.getTodayScoreLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("scoreLogs", scoreLogs);
 		model.addAttribute("totalScore", scoreLogService.computeTotalScore(scoreLogs));
 		return "/scoreLog/score";
@@ -42,10 +45,10 @@ public class ScoreLogController {
 
 	// 查询总共
 	@RequestMapping(value = "/scoreLog/total", method = RequestMethod.GET)
-	public String listTotalScoreLog(Model model) {
+	public String listTotalScoreLog(Model model, HttpSession session) {
 
 		// 实际应该使用session获取
-		List<ScoreLog> scoreLogs = scoreLogService.getAllScoreLogs("17712345678");
+		List<ScoreLog> scoreLogs = scoreLogService.getAllScoreLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("scoreLogs", scoreLogs);
 		model.addAttribute("totalScore", scoreLogService.computeTotalScore(scoreLogs));
 		return "/scoreLog/score";
@@ -55,7 +58,7 @@ public class ScoreLogController {
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/scoreLog/time", method = RequestMethod.POST)
 	public String listTotalScoreLog(@RequestParam("begin") String begin, @RequestParam("end") String end,
-			Model model) {
+			Model model, HttpSession session) {
 		// 对日期进行处理
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -69,7 +72,7 @@ public class ScoreLogController {
 			endDate.setSeconds(59);
 
 			// 实际应该使用session获取
-			List<ScoreLog> scoreLogs = scoreLogService.getScoreLogs("17712345678", beginDate, endDate);
+			List<ScoreLog> scoreLogs = scoreLogService.getScoreLogs(((User)session.getAttribute("user")).getUserPhone(), beginDate, endDate);
 			model.addAttribute("scoreLogs", scoreLogs);
 			model.addAttribute("totalScore", scoreLogService.computeTotalScore(scoreLogs));
 			return "/scoreLog/score";

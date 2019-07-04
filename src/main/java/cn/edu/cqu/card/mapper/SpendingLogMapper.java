@@ -8,22 +8,28 @@ import org.apache.ibatis.annotations.Param;
 import cn.edu.cqu.card.model.SpendingLog;
 
 public interface SpendingLogMapper {
-    int deleteByPrimaryKey(Integer spendingLogId);
+	int deleteByPrimaryKey(Integer spendingLogId);
 
-    int insert(SpendingLog record);
+	int insert(SpendingLog record);
 
-    int insertSelective(SpendingLog record);
+	int insertSelective(SpendingLog record);
 
-    SpendingLog selectByPrimaryKey(Integer spendingLogId);
+	SpendingLog selectByPrimaryKey(Integer spendingLogId);
+
+	int updateByPrimaryKeySelective(SpendingLog record);
+
+	int updateByPrimaryKey(SpendingLog record);
+
     
     List<SpendingLog> selectByShop(SpendingLog record);
 
-    int updateByPrimaryKeySelective(SpendingLog record);
+	List<SpendingLog> selectByShopId(int shopId);
+	List<SpendingLog> selectByShopIdAndTime(@Param("shopId") int shopId, @Param("begin") Date begin,@Param("end") Date end);
 
-    int updateByPrimaryKey(SpendingLog record);
     
     List<SpendingLog> selectByUserPhone(String userPhone);
 
 	List<SpendingLog> selectByUserPhoneAndTime(@Param("userPhone") String userPhone, @Param("begin") Date begin,
+
 			@Param("end") Date end);
 }

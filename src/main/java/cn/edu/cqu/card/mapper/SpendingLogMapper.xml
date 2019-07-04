@@ -32,29 +32,27 @@
    <select id="selectByUserPhone" resultType="cn.edu.cqu.card.model.SpendingLog">
   	select
   		shop.SHOP_NAME "shop.shopName",
-  		commodity.COM_NAME "commodity.comName",
   	   	spending_log.USER_PHONE,
     	spending_log.TIME,
     	spending_log.MONEY
  
   	from 
-  		(shop
-  		INNER JOIN spending_log ON shop.SHOP_ID = spending_log.SHOP_ID)
-  		INNER JOIN commodity ON spending_log.SHOP_ID = commodity.SHOP_ID
+  		shop
+  		INNER JOIN spending_log ON shop.SHOP_ID = spending_log.SHOP_ID
+  
   	where USER_PHONE = #{value}
   </select>
   <select id="selectByUserPhoneAndTime" resultType="cn.edu.cqu.card.model.SpendingLog">
   	select
 		shop.SHOP_NAME "shop.shopName",
-  		commodity.COM_NAME "commodity.comName",
   	   	spending_log.USER_PHONE,
     	spending_log.TIME,
     	spending_log.MONEY
     	
   	from
-		(shop
-  		INNER JOIN spending_log ON shop.SHOP_ID = spending_log.SHOP_ID)
-  		INNER JOIN commodity ON spending_log.SHOP_ID = commodity.SHOP_ID
+		shop
+  		INNER JOIN spending_log ON shop.SHOP_ID = spending_log.SHOP_ID
+
   	where USER_PHONE = #{userPhone} and TIME between #{begin} and #{end}
   </select>
   <select id="selectByShop" resultMap="BaseResultMap" parameterType="cn.edu.cqu.card.model.SpendingLog" >
@@ -76,7 +74,7 @@
     delete from spending_log
     where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.cqu.card.model.SpendingLog" >
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.SpendingLog" useGeneratedKeys="true" keyProperty="spendingLogId">
     insert into spending_log (SPENDING_LOG_ID, SHOP_ID, COM_ID, 
       SCORE_LOG_ID, USER_PHONE, TIME, 
       MONEY)
@@ -167,4 +165,16 @@
       MONEY = #{money,jdbcType=REAL}
     where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
   </update>
+  <select id="selectByShopId" resultType="cn.edu.cqu.card.model.SpendingLog">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from spending_log
+  	where SHOP_ID = #{value}
+  </select>
+  <select id="selectByShopIdAndTime" resultType="cn.edu.cqu.card.model.SpendingLog">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from spending_log
+  	where SHOP_ID = #{shopId} and TIME between #{begin} and #{end}
+  </select>
 </mapper>

@@ -17,7 +17,6 @@
 			<tr>
 				<th>顾客手机号</th>
 				<th>商家名称</th>
-				<th>商家名称</th>
 				<th>时间</th>
 				<th>金额</th>		
 			</tr>
@@ -27,7 +26,6 @@
 				<tr>
 					<td>${p.userPhone }</td>
 					<td>${p.shop.shopName }</td>
-					<td>${p.commodity.comName }</td>
 					<td><fmt:formatDate pattern = "yyyy-MM-dd HH:mm"  value = "${p.time }" /></td>
 					<td>${p.money }</td>
 					
