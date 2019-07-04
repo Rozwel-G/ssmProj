@@ -27,7 +27,7 @@ public class AddStaffAccountController {
 	{
 		System.out.println(file.getOriginalFilename());
 		ServletContext sc = request.getSession().getServletContext();
-		File newFile = new File(sc.getRealPath("/")+"\\"+file.getOriginalFilename());
+		File newFile = new File(sc.getRealPath("/img")+"\\"+file.getOriginalFilename());
 		file.transferTo(newFile);
 		System.out.println(newFile.getPath());
 		
