@@ -2,6 +2,8 @@ package cn.edu.cqu.card.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SpendingLog {
     private Integer spendingLogId;
 
@@ -12,10 +14,22 @@ public class SpendingLog {
     private Integer scoreLogId;
 
     private String userPhone;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date time;
 
     private Float money;
+    
+    private Shop shop;
+    
+    private Commodity commodity;
+    
+    public Commodity getCommodity() {
+    	return commodity;
+    }
+    
+    public Shop getShop() {
+    	return shop;
+    }
 
     public Integer getSpendingLogId() {
         return spendingLogId;
