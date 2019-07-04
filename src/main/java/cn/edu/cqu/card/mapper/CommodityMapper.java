@@ -18,6 +18,9 @@ public interface CommodityMapper {
 	int updateByPrimaryKeySelective(Commodity record);
 
 	int updateByPrimaryKey(Commodity record);
+    Commodity selectByShopIdAndComName(Commodity record);
+  
+    List<Commodity> selectByShopId(int shopId);
 
 	List<Commodity> searchByNameKeyword(String nameKeyword);
 

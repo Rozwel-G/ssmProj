@@ -209,5 +209,5 @@
       USER_BALANCE = #{userBalance,jdbcType=REAL},
       USER_SCORE = #{userScore,jdbcType=INTEGER}
     where USER_PHONE = #{userPhone,jdbcType=CHAR}
-  </update>
+	</update>
 </mapper>

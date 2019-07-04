@@ -41,95 +41,6 @@
 		#{comPrice,jdbcType=REAL}, #{comPic,jdbcType=VARCHAR},
 		#{comIntro,jdbcType=VARCHAR})
 	</insert>
-	<insert id="insertSelective"
-		parameterType="cn.edu.cqu.card.model.Commodity">
-		insert into commodity
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="comId != null">
-				COM_ID,
-			</if>
-			<if test="shopId != null">
-				SHOP_ID,
-			</if>
-			<if test="comName != null">
-				COM_NAME,
-			</if>
-			<if test="comType != null">
-				COM_TYPE,
-			</if>
-			<if test="comPrice != null">
-				COM_PRICE,
-			</if>
-			<if test="comPic != null">
-				COM_PIC,
-			</if>
-			<if test="comIntro != null">
-				COM_INTRO,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="comId != null">
-				#{comId,jdbcType=INTEGER},
-			</if>
-			<if test="shopId != null">
-				#{shopId,jdbcType=INTEGER},
-			</if>
-			<if test="comName != null">
-				#{comName,jdbcType=VARCHAR},
-			</if>
-			<if test="comType != null">
-				#{comType,jdbcType=VARCHAR},
-			</if>
-			<if test="comPrice != null">
-				#{comPrice,jdbcType=REAL},
-			</if>
-			<if test="comPic != null">
-				#{comPic,jdbcType=VARCHAR},
-			</if>
-			<if test="comIntro != null">
-				#{comIntro,jdbcType=VARCHAR},
-			</if>
-		</trim>
-	</insert>
-	<update id="updateByPrimaryKeySelective"
-		parameterType="cn.edu.cqu.card.model.Commodity">
-		update commodity
-		<set>
-			<if test="shopId != null">
-				SHOP_ID = #{shopId,jdbcType=INTEGER},
-			</if>
-			<if test="comName != null">
-				COM_NAME = #{comName,jdbcType=VARCHAR},
-			</if>
-			<if test="comType != null">
-				COM_TYPE = #{comType,jdbcType=VARCHAR},
-			</if>
-			<if test="comPrice != null">
-				COM_PRICE = #{comPrice,jdbcType=REAL},
-			</if>
-			<if test="comPic != null">
-				COM_PIC = #{comPic,jdbcType=VARCHAR},
-			</if>
-			<if test="comIntro != null">
-				COM_INTRO = #{comIntro,jdbcType=VARCHAR},
-			</if>
-		</set>
-		where COM_ID = #{comId,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey"
-		parameterType="cn.edu.cqu.card.model.Commodity">
-		update commodity
-		set SHOP_ID =
-		#{shopId,jdbcType=INTEGER},
-		COM_NAME = #{comName,jdbcType=VARCHAR},
-		COM_TYPE = #{comType,jdbcType=VARCHAR},
-		COM_PRICE =
-		#{comPrice,jdbcType=REAL},
-		COM_PIC = #{comPic,jdbcType=VARCHAR},
-		COM_INTRO = #{comIntro,jdbcType=VARCHAR}
-		where COM_ID =
-		#{comId,jdbcType=INTEGER}
-	</update>
 	<select id="searchByNameKeyword" parameterType="String"
 		resultType="cn.edu.cqu.card.model.Commodity">
 		select
@@ -151,4 +62,99 @@
 		and SHOP_DETAIL like
 		concat("%",#{detail},"%")
 	</select>
+  <select id="selectByShopIdAndComName" resultMap="BaseResultMap" parameterType="cn.edu.cqu.card.model.Commodity" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where SHOP_ID = #{shopId,jdbcType=INTEGER} and COM_NAME = #{comName,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where SHOP_ID = #{shopId,jdbcType=INTEGER}
+  </select>
+  <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.Commodity" >
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="comId != null" >
+        COM_ID,
+      </if>
+      <if test="shopId != null" >
+        SHOP_ID,
+      </if>
+      <if test="comName != null" >
+        COM_NAME,
+      </if>
+      <if test="comType != null" >
+        COM_TYPE,
+      </if>
+      <if test="comPrice != null" >
+        COM_PRICE,
+      </if>
+      <if test="comPic != null" >
+        COM_PIC,
+      </if>
+      <if test="comIntro != null" >
+        COM_INTRO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="comId != null" >
+        #{comId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="comName != null" >
+        #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comType != null" >
+        #{comType,jdbcType=VARCHAR},
+      </if>
+      <if test="comPrice != null" >
+        #{comPrice,jdbcType=REAL},
+      </if>
+      <if test="comPic != null" >
+        #{comPic,jdbcType=VARCHAR},
+      </if>
+      <if test="comIntro != null" >
+        #{comIntro,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cqu.card.model.Commodity" >
+    update commodity
+    <set >
+      <if test="shopId != null" >
+        SHOP_ID = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="comName != null" >
+        COM_NAME = #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comType != null" >
+        COM_TYPE = #{comType,jdbcType=VARCHAR},
+      </if>
+      <if test="comPrice != null" >
+        COM_PRICE = #{comPrice,jdbcType=REAL},
+      </if>
+      <if test="comPic != null" >
+        COM_PIC = #{comPic,jdbcType=VARCHAR},
+      </if>
+      <if test="comIntro != null" >
+        COM_INTRO = #{comIntro,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COM_ID = #{comId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cqu.card.model.Commodity" >
+    update commodity
+    set SHOP_ID = #{shopId,jdbcType=INTEGER},
+      COM_NAME = #{comName,jdbcType=VARCHAR},
+      COM_TYPE = #{comType,jdbcType=VARCHAR},
+      COM_PRICE = #{comPrice,jdbcType=REAL},
+      COM_PIC = #{comPic,jdbcType=VARCHAR},
+      COM_INTRO = #{comIntro,jdbcType=VARCHAR}
+    where COM_ID = #{comId,jdbcType=INTEGER}
+  </update>
 </mapper>

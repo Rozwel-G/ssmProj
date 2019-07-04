@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import cn.edu.cqu.card.mapper.StaffMapper;
 import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.model.Staff;
+import cn.edu.cqu.card.service.StaffService;
 
 @Service
 public class StaffServiceImpl implements StaffService{

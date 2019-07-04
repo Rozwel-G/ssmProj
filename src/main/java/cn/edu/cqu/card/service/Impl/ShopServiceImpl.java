@@ -2,21 +2,24 @@ package cn.edu.cqu.card.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import cn.edu.cqu.card.mapper.StaffMapper;
-import cn.edu.cqu.card.model.Staff;
-
+import cn.edu.cqu.card.service.ShopService;
+import cn.edu.cqu.card.mapper.ShopMapper;
+import cn.edu.cqu.card.model.Shop;
 
 @Service
-public class ShopServiceImpl implements ShopService {
-	
+public class ShopServiceImpl implements ShopService{
 	@Autowired
-	private StaffMapper staffMapper;
-
+	private ShopMapper shopMapper;
+	
+	
 	@Override
-	public int addStaff(Staff staff,int shopId) {
-		return staffMapper.addStaff(staff.getStaffPhone(),shopId);
+	public void updateShop(Shop shop) {
+		shopMapper.updateByPrimaryKey(shop);
 	}
 
 
+	@Override
+	public Shop showShop(Integer shopId) {
+		return shopMapper.selectByPrimaryKey(shopId);
+	}
 }

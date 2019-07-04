@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.model.Staff;
-import cn.edu.cqu.card.service.Impl.StaffService;
+import cn.edu.cqu.card.service.StaffService;
 
 @Controller
 public class ShopStaffController {
