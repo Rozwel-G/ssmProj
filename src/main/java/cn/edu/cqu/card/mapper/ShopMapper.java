@@ -1,5 +1,7 @@
 package cn.edu.cqu.card.mapper;
 
+import java.util.List;
+
 import cn.edu.cqu.card.model.Shop;
 
 public interface ShopMapper {

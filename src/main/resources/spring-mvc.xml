@@ -20,10 +20,14 @@
 	
 	<!-- 拦截器 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 
 >>>>>>> origin/ljs
+=======
+	
+>>>>>>> origin
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*" />
@@ -33,7 +37,6 @@
 	</mvc:interceptors>
 	-->
 
-	
 	<!-- 视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
