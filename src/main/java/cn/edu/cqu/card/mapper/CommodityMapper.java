@@ -13,6 +13,8 @@ public interface CommodityMapper {
 
     Commodity selectByPrimaryKey(Integer comId);
     
+    Commodity selectByShopIdAndComName(Commodity record);
+  
     List<Commodity> selectByShopId(int shopId);
 
     int updateByPrimaryKeySelective(Commodity record);

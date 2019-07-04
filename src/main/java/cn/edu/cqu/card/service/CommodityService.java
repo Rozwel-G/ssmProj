@@ -11,4 +11,6 @@ public interface CommodityService {
 	List<Commodity> commodities(int shopId);
 	
 	int deleteCommodity(int comId);
+	
+	boolean check(Commodity commodity);
 }

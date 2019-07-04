@@ -16,8 +16,8 @@ public class CommodityServiceImpl implements CommodityService {
 	private CommodityMapper commodityMapper;
 	
 	@Override
-	public void addCommodity(Commodity commoduty) {
-		commodityMapper.insert(commoduty);
+	public void addCommodity(Commodity commodity) {
+		commodityMapper.insert(commodity);
 	}
 
 	@Override
@@ -28,6 +28,15 @@ public class CommodityServiceImpl implements CommodityService {
 	@Override
 	public int deleteCommodity(int comId) {
 		return commodityMapper.deleteByPrimaryKey(comId);
+	}
+
+	@Override
+	public boolean check(Commodity commodity) {
+		if(commodityMapper.selectByShopIdAndComName(commodity) != null) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

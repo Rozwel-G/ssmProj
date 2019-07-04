@@ -19,6 +19,12 @@
     from commodity
     where COM_ID = #{comId,jdbcType=INTEGER}
   </select>
+  <select id="selectByShopIdAndComName" resultMap="BaseResultMap" parameterType="cn.edu.cqu.card.model.Commodity" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where SHOP_ID = #{shopId,jdbcType=INTEGER} and COM_NAME = #{comName,jdbcType=VARCHAR}
+  </select>
   <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
