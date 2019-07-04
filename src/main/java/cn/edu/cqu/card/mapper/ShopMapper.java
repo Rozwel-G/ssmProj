@@ -2,6 +2,7 @@ package cn.edu.cqu.card.mapper;
 
 import java.util.List;
 
+
 import org.apache.ibatis.annotations.Param;
 
 import cn.edu.cqu.card.model.Shop;
