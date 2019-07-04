@@ -20,9 +20,13 @@
 	
 	<!-- 拦截器 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 >>>>>>> 2f550fe14f262870f5cc05cfe91c4fcd65fce9a6
+=======
+	
+>>>>>>> 2667f39dffcefaf6983c4dc16d5f98b361ce41b4
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*" />
@@ -31,8 +35,6 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	-->
-	
-	
 	<!-- 视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

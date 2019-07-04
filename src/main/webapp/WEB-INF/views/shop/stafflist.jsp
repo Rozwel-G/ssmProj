@@ -13,6 +13,7 @@
 		<c:forEach items="${requestScope.staffs}" var="a">
 		<li>账号：${a.staffPhone}\密码：${a.staffPassword}<a href ="/shop/delete?account=${a.staffPhone}" name = "account">删除</a></li>	
 		</c:forEach>
+		<img src="/pic/tes.jpg">
 	</ul>
 </body>
 </html>

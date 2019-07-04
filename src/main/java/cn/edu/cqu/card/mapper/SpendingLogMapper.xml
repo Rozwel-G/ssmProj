@@ -23,7 +23,7 @@
     delete from spending_log
     where SPENDING_LOG_ID = #{spendingLogId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.cqu.card.model.SpendingLog" >
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.SpendingLog" useGeneratedKeys="true" keyProperty="spendingLogId">
     insert into spending_log (SPENDING_LOG_ID, SHOP_ID, COM_ID, 
       SCORE_LOG_ID, USER_PHONE, TIME, 
       MONEY)
