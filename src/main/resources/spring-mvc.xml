@@ -19,21 +19,6 @@
 	<context:component-scan base-package="cn.edu.cqu.card.controller" />
 	
 	<!-- 拦截器 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-=======
->>>>>>> 2f550fe14f262870f5cc05cfe91c4fcd65fce9a6
-=======
-	
->>>>>>> 2667f39dffcefaf6983c4dc16d5f98b361ce41b4
-=======
-	
-=======
-
->>>>>>> origin/ljs
->>>>>>> 3a1337bcfaa78391b0e07286d65d8cb7602492bf
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*" />
@@ -43,7 +28,6 @@
 	</mvc:interceptors>
 	-->
 
-	
 	<!-- 视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
