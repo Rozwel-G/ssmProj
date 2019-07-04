@@ -17,10 +17,10 @@ public class UserLoginController {
 	@Autowired
 	private UserLoginService userLoginService;
 	
-	@RequestMapping(value = "/login/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String get()
 	{
-		return "UserLogin";
+		return "adminlogin";
 	}
 	
 	@RequestMapping(value = "/login/user", method = RequestMethod.POST)
