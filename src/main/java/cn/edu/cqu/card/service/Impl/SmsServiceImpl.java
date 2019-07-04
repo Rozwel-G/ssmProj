@@ -40,7 +40,8 @@ public class SmsServiceImpl implements SmsService{
     @Override
     public boolean sendPassNotice(String code, String phoneNumber) {
     	JsonObject jo = new JsonObject();
-    	jo.addProperty("code", code);
+    	jo.addProperty("account", phoneNumber);
+    	jo.addProperty("password", code);
     	String codeJson = jo.toString();
     	
     	return sendSms(phoneNumber, passNotice_signName, passNotice_templateCode, codeJson);

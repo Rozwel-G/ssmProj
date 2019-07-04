@@ -35,5 +35,4 @@ public class SearchController {
 		model.addAttribute("commodities", commodities);
 		return "/search/show";
 	}
-
 }

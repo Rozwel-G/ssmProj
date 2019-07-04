@@ -16,8 +16,6 @@ import cn.edu.cqu.card.service.ConsumptionSettlementService;
 public class ConsumptionSettlementController {
 	@Autowired
 	private ConsumptionSettlementService consumptionsettlementservice;
-
-
 	
 	@PutMapping("/settle")
 	public String settle(HttpSession session,String userPhone,float price) {
