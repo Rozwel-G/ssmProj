@@ -2,7 +2,7 @@ package cn.edu.cqu.card.service;
 
 import cn.edu.cqu.card.model.User;
 
-public interface ResetService {
+public interface UserResetService {
 
 	
 	

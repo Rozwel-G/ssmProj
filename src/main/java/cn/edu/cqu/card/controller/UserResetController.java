@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.edu.cqu.card.model.User;
-import cn.edu.cqu.card.service.ResetService;
+import cn.edu.cqu.card.service.UserResetService;
 
 @Controller
-public class ResetController {
+public class UserResetController {
 
 	@Autowired
-	private ResetService resetService;
-	@RequestMapping(value = "/reset", method = RequestMethod.GET)
+	private UserResetService userResetService;
+	@RequestMapping(value = "/reset/user", method = RequestMethod.GET)
 	public String get()
 	{
-		return "Reset";
+		return "UserReset";
 	}
-	@RequestMapping(value = "/reset", method = RequestMethod.POST)
+	@RequestMapping(value = "/reset/user", method = RequestMethod.POST)
 	public String reset(@RequestParam("oldPassword") String oldPassword, @RequestParam("firstNewPassword") String firstNewPassword, @RequestParam("secondNewPassword") String secondNewPassword, HttpSession session)
 	{
 		User user = (User) session.getAttribute("user");
-		if(resetService.check(oldPassword, user))
+		if(userResetService.check(oldPassword, user))
 		{
-			int  i = resetService.reset(firstNewPassword, user);
+			int  i = userResetService.reset(firstNewPassword, user);
 		}
-		return "redirect:/login";
+		return "redirect:/login/user";
 	}
 	
 }

@@ -1,16 +1,14 @@
 package cn.edu.cqu.card.service.Impl;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.edu.cqu.card.mapper.UserMapper;
 import cn.edu.cqu.card.model.User;
-import cn.edu.cqu.card.service.ResetService;
+import cn.edu.cqu.card.service.UserResetService;
 
 @Service
-public class ResetServiceImpl implements ResetService {
+public class UserResetServiceImpl implements UserResetService {
 
 	@Autowired
 	private UserMapper userMapper;

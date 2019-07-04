@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/login" method="post">
+	<form action="/login/shop" method="post">
 		text<input type = "text" name = "telephone"/>
 		password<input type = "password" name = "password"/>
 		<input type = "submit" name = "提交"/>
 	</form>
-	<a href="/register">注册</a>
+	<a href="/register/shop">注册</a>
 </body>
 </html>

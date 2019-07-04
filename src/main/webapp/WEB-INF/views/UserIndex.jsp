@@ -8,6 +8,7 @@
 </head>
 <body>
 	welcome:<span>${sessionScope.user.userName } </span>
-	<a href = "/reset">修改密码</a>
+	<a href = "/reset/user">修改密码</a>
+	<img alt="111" src="/touxiang/${sessionScope.user.userPic} "/>
 </body>
 </html>

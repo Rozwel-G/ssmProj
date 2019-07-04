@@ -20,7 +20,7 @@
     delete from score_log
     where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.cqu.card.model.ScoreLog" >
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.ScoreLog" useGeneratedKeys="true" keyProperty="scoreLogId" >
     insert into score_log (SCORE_LOG_ID, USER_PHONE, SCORE_LOG_TIME, 
       SCORE_LOG_SCORE)
     values (#{scoreLogId,jdbcType=INTEGER}, #{userPhone,jdbcType=CHAR}, #{scoreLogTime,jdbcType=TIMESTAMP}, 

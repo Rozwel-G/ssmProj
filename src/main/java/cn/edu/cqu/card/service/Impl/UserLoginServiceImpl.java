@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.edu.cqu.card.model.User;
-import cn.edu.cqu.card.service.LoginService;
+import cn.edu.cqu.card.service.UserLoginService;
 
 @Service
-public class LoginServiceImpl implements LoginService {
+public class UserLoginServiceImpl implements UserLoginService {
 
 	@Autowired
 	private cn.edu.cqu.card.mapper.UserMapper userMapper;
