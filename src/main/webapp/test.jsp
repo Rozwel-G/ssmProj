@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/shop/addStaffAccount" method="post">
+<form action="/shop/addStaffAccount" method="post" enctype="multipart/form-data">
 staffPhone<input name="staffPhone"/><br/>
 password<input name="staffPassword"/><br/>
+<input type="file" name="file" id="file" />
 <input type="submit" value="加入">
 </form>
 </body>

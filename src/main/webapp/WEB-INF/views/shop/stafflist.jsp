@@ -15,5 +15,6 @@
 		</c:forEach>
 		<img src="/pic/tes.jpg">
 	</ul>
+	<img  src="/pic/1.jpg">
 </body>
 </html>

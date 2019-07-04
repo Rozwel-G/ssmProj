@@ -27,7 +27,7 @@ public class ShopStaffController {
 		shop.setShopId(1);
 		List<Staff> staffs = staffService.findShopStaffs(shop);
 		model.addAttribute("staffs",staffs);
-		System.out.println(staffs.toString());
+		//System.out.println(staffs.toString());
 		return "shop/stafflist";
 	}
 }
