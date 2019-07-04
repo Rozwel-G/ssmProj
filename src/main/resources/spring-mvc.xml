@@ -19,7 +19,11 @@
 	<context:component-scan base-package="cn.edu.cqu.card.controller" />
 	
 	<!-- 拦截器 
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/ljs
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*" />
@@ -28,6 +32,7 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	-->
+
 	
 	<!-- 视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
