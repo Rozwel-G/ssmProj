@@ -19,6 +19,7 @@ import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.service.NewsService;
 import cn.edu.cqu.card.service.SearchService;
 import cn.edu.cqu.card.service.ShopStatisticService;
+import cn.edu.cqu.card.service.SmsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
@@ -40,38 +41,38 @@ public class TestOfWB {
 	public void testSearch() {
 		try {
 			System.err.println("#############################");
-			List<Commodity> coms = commodityMapper.searchByNameAndArea("µ°³´·¹", "ÖØÇì", "ÖØÇì", "ÄÏ°¶", "µ¯");
+			List<Commodity> coms = commodityMapper.searchByNameAndArea("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½Ï°ï¿½", "ï¿½ï¿½");
 			System.out.println(coms);
 			System.err.println("#############################");
-			List<Shop> shops = shopMapper.searchByNameAndArea("»ð¹ø", "ÖØÇì", "ÖØÇì", "ÄÏ°¶", "µ¯");
+			List<Shop> shops = shopMapper.searchByNameAndArea("ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½Ï°ï¿½", "ï¿½ï¿½");
 			System.out.println(shops);
 			
 			System.err.println("#############################");
-			System.out.println(searchService.searchShop("»ð¹ø", new String[] {"ÖØÇì","ÖØÇì","ÄÏ°¶","×Ó"}));
+			System.out.println(searchService.searchShop("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½Ï°ï¿½","ï¿½ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchShop("»ð¹ø", new String[] {"ÖØÇì","ÖØÇì","ÄÏ°¶"}));
+			System.out.println(searchService.searchShop("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½Ï°ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchShop("»ð¹ø", new String[] {"ÖØÇì","ÖØÇì"}));
+			System.out.println(searchService.searchShop("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchShop("»ð¹ø", new String[] {"ÖØÇì"}));
+			System.out.println(searchService.searchShop("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchShop("¼Ò³£²Ë", null));
+			System.out.println(searchService.searchShop("ï¿½Ò³ï¿½ï¿½ï¿½", null));
 			System.err.println("#############################");
-			System.out.println(searchService.searchShop("»ð¹ø", null));
+			System.out.println(searchService.searchShop("ï¿½ï¿½ï¿½", null));
 			System.err.println("#############################");
-			System.out.println(searchService.searchCommodities("»ð¹ø", new String[] {"ÖØÇì","ÖØÇì","ÄÏ°¶","×Ó"}));
+			System.out.println(searchService.searchCommodities("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½Ï°ï¿½","ï¿½ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchCommodities("»ð¹ø", new String[] {"ÖØÇì","ÖØÇì","ÄÏ°¶"}));
+			System.out.println(searchService.searchCommodities("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½","ï¿½Ï°ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchCommodities("»ð¹ø", new String[] {"ÖØÇì","ÖØÇì"}));
+			System.out.println(searchService.searchCommodities("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchCommodities("»ð¹ø", new String[] {"ÖØÇì"}));
+			System.out.println(searchService.searchCommodities("ï¿½ï¿½ï¿½", new String[] {"ï¿½ï¿½ï¿½ï¿½"}));
 			System.err.println("#############################");
-			System.out.println(searchService.searchCommodities("µ°³´·¹", null));
+			System.out.println(searchService.searchCommodities("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", null));
 			System.err.println("#############################");
-			System.out.println(searchService.searchCommodities("»ð¹ø", null));
-			System.err.println("²âÊÔ 2 #######################");
-			System.out.println(searchService.searchShop("", new String[] {"ÖØÇì"}));
+			System.out.println(searchService.searchCommodities("ï¿½ï¿½ï¿½", null));
+			System.err.println("ï¿½ï¿½ï¿½ï¿½ 2 #######################");
+			System.out.println(searchService.searchShop("", new String[] {"ï¿½ï¿½ï¿½ï¿½"}));
 			System.out.println(searchService.searchShop("", null));
 			
 		} catch (Exception e) {
@@ -101,6 +102,13 @@ public class TestOfWB {
 		
 		System.err.println(shopStatisticService.getTodaySpendingLogs(1));
 		
+	}
+	
+	@Autowired
+	private SmsService smsService;
+	@Test
+	public void testSms() {
+		smsService.sendPassNotice("654321", "13018311530");
 	}
 
 }

@@ -24,8 +24,8 @@ public class SmsServiceImpl implements SmsService{
     static final String verificationCode_templateCode = "SMS_169865275";
     
     //审核通知短信的短信签名与模板号
-    static final String passNotice_signName = "验证码";
-    static final String passNotice_templateCode = "2";
+    static final String passNotice_signName = "好吃街登录验证";
+    static final String passNotice_templateCode = "SMS_169900823";
     
     @Override
     public boolean sendVerificationCode(String code, String phoneNumber) {
@@ -40,8 +40,7 @@ public class SmsServiceImpl implements SmsService{
     @Override
     public boolean sendPassNotice(String code, String phoneNumber) {
     	JsonObject jo = new JsonObject();
-    	jo.addProperty("account", phoneNumber);
-    	jo.addProperty("password", code);
+    	jo.addProperty("code", code);
     	String codeJson = jo.toString();
     	
     	return sendSms(phoneNumber, passNotice_signName, passNotice_templateCode, codeJson);
