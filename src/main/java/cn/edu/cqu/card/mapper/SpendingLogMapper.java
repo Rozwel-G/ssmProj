@@ -20,8 +20,16 @@ public interface SpendingLogMapper {
 
 	int updateByPrimaryKey(SpendingLog record);
 
-	List<SpendingLog> selectByShopId(int shopId);
+    
+    List<SpendingLog> selectByShop(SpendingLog record);
 
-	List<SpendingLog> selectByShopIdAndTime(@Param("shopId") int shopId, @Param("begin") Date begin,
+	List<SpendingLog> selectByShopId(int shopId);
+	List<SpendingLog> selectByShopIdAndTime(@Param("shopId") int shopId, @Param("begin") Date begin,@Param("end") Date end);
+
+    
+    List<SpendingLog> selectByUserPhone(String userPhone);
+
+	List<SpendingLog> selectByUserPhoneAndTime(@Param("userPhone") String userPhone, @Param("begin") Date begin,
+
 			@Param("end") Date end);
 }

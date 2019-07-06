@@ -22,9 +22,9 @@
     SHOP_DETAIL, SHOP_PHONE, OWNER_TITLE, OWNER_NAME, OWNER_PHONE, OWNER_EMAIL
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from shop
+    select SHOP_NAME
+    <!--  <include refid="Base_Column_List" />-->
+    from shop 
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
