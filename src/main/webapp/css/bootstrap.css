@@ -29,6 +29,9 @@ video {
   display: inline-block;
   vertical-align: baseline;
 }
+.col-md-reol{
+    width: 100%;
+}
 audio:not([controls]) {
   display: none;
   height: 0;
