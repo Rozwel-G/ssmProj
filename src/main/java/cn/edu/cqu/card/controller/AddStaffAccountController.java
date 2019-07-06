@@ -22,12 +22,12 @@ public class AddStaffAccountController {
 	private StaffService staffService;
 	
 	
-	@RequestMapping(value="/shop/addStaffAccount",method=RequestMethod.POST)
+	@RequestMapping(value="/shop/menu/staff/addStaffAccount",method=RequestMethod.POST)
 	public String addStaff(Staff staff,HttpSession session,@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IllegalStateException, IOException
 	{
 		System.out.println(file.getOriginalFilename());
 		ServletContext sc = request.getSession().getServletContext();
-		File newFile = new File(sc.getRealPath("/img")+"\\"+file.getOriginalFilename());
+		File newFile = new File(sc.getRealPath("/images")+"\\"+staff.getStaffPhone());
 		file.transferTo(newFile);
 		System.out.println(newFile.getPath());
 		
@@ -38,7 +38,7 @@ public class AddStaffAccountController {
 		staff.setStaffPic(file.getOriginalFilename());
 		staffService.insert(staff);
 		
-		return "redirect:list";
+		return "redirect:../menu/staff/list";
 		
 	}
 }

@@ -77,23 +77,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="col-md-reol product-price">
 
-					<div class=" rsidebar span_1_of_right" onload="goPage(1)">
+					<div class=" rsidebar span_1_of_right" style="height:200px">
 						<div class="of-left">
-							<h3 class="cate">Categories</h3>
+							<h3 class="cate of-left-reol">Categories</h3>
+							<div class="of-right-reol">
+							<a href="#">添加员工</a>
+							</div>
 						</div>
+						
 						<ul class="m-menu">
-							<li class=""><a href="#">Men </a><input type="button" value="删除" /></li>
-							<li class=""><a href="#">Women </a><input type="button" name="delete"/></li>
-							<li class=""><a href="#">Kids</a><input type="button" name="delete"/></li>
-							<li class=""><a href="#">Accesories</a><input type="button" name="delete"/></li>
-							<li class=""><a href="#">Shoes</a><input type="button" name="delete"/></li>
-							<li><a href="">test</a></li>
-							<li><a href="">test2</a></li>
-							<li><a href="">test3</a></li>
-							<li><a href="">test4</a></li>
-							<li><a href="">test5</a></li>
 							<c:forEach items="${requestScope.staffs}" var="a">
-								<li> <a>${a.staffPhone }</a><input type="button" value="删除" /></li>
+								<li> <a href="#">${a.staffPhone }</a><a class="input" onclick="return confirm('你确定要删除吗？');" href="/shop/menu/staff/delete?account=${a.staffPhone }">删除</a></li>
 							</c:forEach>
 							
 						</ul>
@@ -106,14 +100,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"></div>
 				<div class="center">
 					<ul class="divide">
-						<li>
-							<a href="#" class="tag"><<</a>
-							<a href="#" class="active" onclick="goPage(1)">1</a>
-							<a href="#" onclick="goPage(2)">2</a>
-							<a href="#" onclick="goPage(3)">3</a>
-							<a href="#" onclick="goPage(4)">4</a>
-							<a href="#" onclick="goPage(6)">5</a>
-							<a href="#" class="tag">>></a>
+						<li id = "sel">
+							
 						</li>
 					</ul>	
 				</div>
@@ -133,12 +121,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<script type="text/javascript">
 					function goPage(num){
 						var items = $(".m-menu li").length;
+						num  = (num<=0)?1:num;
+						var nums = Math.ceil(items / 5); ;
+						num = (num>nums)?nums:num;
+						console.log(num);
 						var startRow = (num-1)*5+1;
 						var endRow = num*5;
 
-
 						endRow = (endRow>items)?items:endRow;
-						console.log(endRow);
 
 						for(var i=1;i<(items+1);i++)
 						{
@@ -152,6 +142,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							}
 
 						}
+						var tempStr = "<a href=\"#\" onclick=\"goPage("+(num-1)+")\" class=\"tag\"><<</a><a href=\"#\" class=\"";
+						if(num==1)
+						{
+							tempStr+="active";
+						}
+						
+						tempStr+="\" onclick=\"goPage(1)\">1</a>";
+						for(var i=1;i<=nums-1;i++)
+						{
+							tempStr+="<a href=\"#\" onclick=\"goPage("+(i+1)+")\" class=\"";
+							if(num==i+1)
+								tempStr+="active";
+							
+							tempStr+="\">"+(i+1)+"</a>";
+						}
+						tempStr+="<a href=\"#\" onclick=\"goPage("+(num+1)+")\" class=\"tag\">>></a>";
+						document.getElementById("sel").innerHTML=tempStr;
 					};
 				</script>
 				<script type="text/javascript">

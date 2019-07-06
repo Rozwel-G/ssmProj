@@ -26,15 +26,6 @@ public class ShopStaffController {
 		Shop shop = new Shop();
 		shop.setShopId(1);
 		List<Staff> staffs = staffService.findShopStaffs(shop);
-		int number = staffs.size();
-		
-		int last = number%5==0?0:(5-number%5);
-		for(int i=0;i<last;i++)
-		{
-			Staff s = new Staff();
-			s.setStaffPhone("   ");
-			staffs.add(s);
-		}
 		model.addAttribute("staffs",staffs);
 		//System.out.println(staffs.toString());
 		return "shop/menu/staff/list";

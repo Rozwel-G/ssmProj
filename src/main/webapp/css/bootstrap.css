@@ -31,6 +31,7 @@ video {
 }
 .col-md-reol{
     width: 100%;
+    float:left;
 }
 audio:not([controls]) {
   display: none;
