@@ -30,7 +30,13 @@ public class ScoreLogController {
 
 	@RequestMapping(value = "/scoreLog", method = RequestMethod.GET)
 	public String enterScoreStatistic() {
-		return "/scoreLog/S_index";
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/user/checkscorelog", method = RequestMethod.GET)
+	public String enterUserScoreStatistic() {
+		return "/user/scoreindex";
 	}
 	// 查询当日
 	@RequestMapping(value = "/scoreLog/today", method = RequestMethod.GET)
@@ -40,7 +46,7 @@ public class ScoreLogController {
 		List<ScoreLog> scoreLogs = scoreLogService.getTodayScoreLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("scoreLogs", scoreLogs);
 		model.addAttribute("totalScore", scoreLogService.computeTotalScore(scoreLogs));
-		return "/scoreLog/score";
+		return "/user/showscore";
 	}
 
 	// 查询总共
@@ -51,7 +57,7 @@ public class ScoreLogController {
 		List<ScoreLog> scoreLogs = scoreLogService.getAllScoreLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("scoreLogs", scoreLogs);
 		model.addAttribute("totalScore", scoreLogService.computeTotalScore(scoreLogs));
-		return "/scoreLog/score";
+		return "/user/showscore";
 	}
 
 	// 查询给定范围的流水
@@ -75,7 +81,7 @@ public class ScoreLogController {
 			List<ScoreLog> scoreLogs = scoreLogService.getScoreLogs(((User)session.getAttribute("user")).getUserPhone(), beginDate, endDate);
 			model.addAttribute("scoreLogs", scoreLogs);
 			model.addAttribute("totalScore", scoreLogService.computeTotalScore(scoreLogs));
-			return "/scoreLog/score";
+			return "/user/showscore";
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

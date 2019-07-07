@@ -28,10 +28,15 @@ import cn.edu.cqu.card.service.SpendingLogService;
 public class SpendingLogController {
 	@Autowired
 	private SpendingLogService spendingLogService;
-
+	
 	@RequestMapping(value = "/spendingLog", method = RequestMethod.GET)
+	public String enterStatistic() {
+		return "index";
+	}
+
+	@RequestMapping(value = "/user/checkspendinglog", method = RequestMethod.GET)
 	public String enterUserStatistic() {
-		return "/spendingLog/index";
+		return "/user/index";
 	}
 	// 查询当日
 	@RequestMapping(value = "/spendingLog/today", method = RequestMethod.GET)
@@ -41,7 +46,7 @@ public class SpendingLogController {
 		List<SpendingLog> spendingLogs = spendingLogService.getTodaySpendingLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", spendingLogService.computeTotalMoney(spendingLogs));
-		return "/spendingLog/spending";
+		return "/user/show";
 	}
 
 	// 查询总共
@@ -52,7 +57,7 @@ public class SpendingLogController {
 		List<SpendingLog> spendingLogs = spendingLogService.getAllSpendingLogs(((User)session.getAttribute("user")).getUserPhone());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", spendingLogService.computeTotalMoney(spendingLogs));
-		return "/spendingLog/spending";
+		return "/user/show";
 	}
 
 	// 查询给定范围的流水
@@ -76,7 +81,7 @@ public class SpendingLogController {
 			List<SpendingLog> spendingLogs = spendingLogService.getSpendingLogs(((User)session.getAttribute("user")).getUserPhone(), beginDate, endDate);
 			model.addAttribute("spendingLogs", spendingLogs);
 			model.addAttribute("totalMoney", spendingLogService.computeTotalMoney(spendingLogs));
-			return "/spendingLog/spending";
+			return "/user/show";
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
