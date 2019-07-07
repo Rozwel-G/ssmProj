@@ -10,17 +10,31 @@
   <sql id="Base_Column_List" >
     SCORE_LOG_ID, USER_PHONE, SCORE_LOG_TIME, SCORE_LOG_SCORE
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   <select id="selectByUserPhone" resultType="cn.edu.cqu.card.model.ScoreLog">
+  	select
+  	<include refid="Base_Column_List"/>
+  	from score_log
+  	where USER_PHONE = #{value}
+  </select>
+  <select id="selectByUserPhoneAndTime" resultType="cn.edu.cqu.card.model.ScoreLog">
+  	select
+	<include refid="Base_Column_List"/>
+    	
+  	from score_log
+
+  	where USER_PHONE = #{userPhone} and SCORE_LOG_TIME between #{begin} and #{end}
+  </select>
+  <select id="select" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
-    <include refid="Base_Column_List" />
+  	<include refid="Base_Column_List" />
     from score_log
-    where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
+    where USER_PHONE = #{userPhone}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from score_log
     where SCORE_LOG_ID = #{scoreLogId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.cqu.card.model.ScoreLog" >
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.ScoreLog" useGeneratedKeys="true" keyProperty="scoreLogId" >
     insert into score_log (SCORE_LOG_ID, USER_PHONE, SCORE_LOG_TIME, 
       SCORE_LOG_SCORE)
     values (#{scoreLogId,jdbcType=INTEGER}, #{userPhone,jdbcType=CHAR}, #{scoreLogTime,jdbcType=TIMESTAMP}, 

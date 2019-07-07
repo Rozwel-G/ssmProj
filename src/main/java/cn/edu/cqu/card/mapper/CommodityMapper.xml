@@ -1,36 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.edu.cqu.card.mapper.CommodityMapper" >
-  <resultMap id="BaseResultMap" type="cn.edu.cqu.card.model.Commodity" >
-    <id column="COM_ID" property="comId" jdbcType="INTEGER" />
-    <result column="SHOP_ID" property="shopId" jdbcType="INTEGER" />
-    <result column="COM_NAME" property="comName" jdbcType="VARCHAR" />
-    <result column="COM_TYPE" property="comType" jdbcType="VARCHAR" />
-    <result column="COM_PRICE" property="comPrice" jdbcType="REAL" />
-    <result column="COM_PIC" property="comPic" jdbcType="VARCHAR" />
-    <result column="COM_INTRO" property="comIntro" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    COM_ID, SHOP_ID, COM_NAME, COM_TYPE, COM_PRICE, COM_PIC, COM_INTRO
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+<mapper namespace="cn.edu.cqu.card.mapper.CommodityMapper">
+	<resultMap id="BaseResultMap"
+		type="cn.edu.cqu.card.model.Commodity">
+		<id column="COM_ID" property="comId" jdbcType="INTEGER" />
+		<result column="SHOP_ID" property="shopId" jdbcType="INTEGER" />
+		<result column="COM_NAME" property="comName" jdbcType="VARCHAR" />
+		<result column="COM_TYPE" property="comType" jdbcType="VARCHAR" />
+		<result column="COM_PRICE" property="comPrice" jdbcType="REAL" />
+		<result column="COM_PIC" property="comPic" jdbcType="VARCHAR" />
+		<result column="COM_INTRO" property="comIntro"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		COM_ID, SHOP_ID, COM_NAME, COM_TYPE, COM_PRICE, COM_PIC,
+		COM_INTRO
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from commodity
+		where COM_ID = #{comId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from commodity
+		where COM_ID =
+		#{comId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert"
+		parameterType="cn.edu.cqu.card.model.Commodity">
+		insert into commodity (COM_ID, SHOP_ID, COM_NAME,
+		COM_TYPE, COM_PRICE, COM_PIC,
+		COM_INTRO)
+		values
+		(#{comId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER},
+		#{comName,jdbcType=VARCHAR},
+		#{comType,jdbcType=VARCHAR},
+		#{comPrice,jdbcType=REAL}, #{comPic,jdbcType=VARCHAR},
+		#{comIntro,jdbcType=VARCHAR})
+	</insert>
+	<select id="searchByNameKeyword" parameterType="String"
+		resultType="cn.edu.cqu.card.model.Commodity">
+		select
+		<include refid="Base_Column_List" />
+		from commodity
+		where COM_NAME like concat("%",#{value},"%")
+	</select>
+	<select id="searchByNameAndArea"
+		resultType="cn.edu.cqu.card.model.Commodity">
+		select
+		<include refid="Base_Column_List" />
+		from shop natural join commodity
+		where COM_NAME like
+		concat("%",#{name},"%")
+		and SHOP_PROVINCE like
+		concat("%",#{province},"%")
+		and SHOP_CITY like concat("%",#{city},"%")
+		and SHOP_COUNTY like concat("%",#{county},"%")
+		and SHOP_DETAIL like
+		concat("%",#{detail},"%")
+	</select>
+  <select id="selectByShopIdAndComName" resultMap="BaseResultMap" parameterType="cn.edu.cqu.card.model.Commodity" >
     select 
     <include refid="Base_Column_List" />
     from commodity
-    where COM_ID = #{comId,jdbcType=INTEGER}
+    where SHOP_ID = #{shopId,jdbcType=INTEGER} and COM_NAME = #{comName,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from commodity
-    where COM_ID = #{comId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="cn.edu.cqu.card.model.Commodity" >
-    insert into commodity (COM_ID, SHOP_ID, COM_NAME, 
-      COM_TYPE, COM_PRICE, COM_PIC, 
-      COM_INTRO)
-    values (#{comId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{comName,jdbcType=VARCHAR}, 
-      #{comType,jdbcType=VARCHAR}, #{comPrice,jdbcType=REAL}, #{comPic,jdbcType=VARCHAR}, 
-      #{comIntro,jdbcType=VARCHAR})
-  </insert>
+  <select id="selectByShopId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where SHOP_ID = #{shopId,jdbcType=INTEGER}
+  </select>
   <insert id="insertSelective" parameterType="cn.edu.cqu.card.model.Commodity" >
     insert into commodity
     <trim prefix="(" suffix=")" suffixOverrides="," >
