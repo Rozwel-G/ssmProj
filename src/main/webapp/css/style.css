@@ -1,4 +1,4 @@
-body{
+banner-textbody{
 	background:#fff;
 	font-family: 'Roboto', sans-serif;
 }
@@ -81,10 +81,12 @@ a.item_add {
 .header {
   border-bottom: 1px solid #000;
 }
+
 .header-top{
 	background: #000;
 	  padding: 15px 0;
 }
+
 .search{
 	position:relative;
 	  float: left;
@@ -123,6 +125,10 @@ a.item_add {
   -o-transition: 0.5s all;
   -moz-transition: 0.5s all;
   -ms-transition: 0.5s all;
+}
+.header-left-2{
+	float: right;
+	padding: 5px;
 }
 .header-left{
 	float: right;
@@ -185,10 +191,10 @@ a.item_add {
 /*--banner--*/
 
 .banner{
-	background: url(../images/1.jpg) no-repeat ;
+	background:no-repeat ;
 	background-size: cover;
 	width:100%;
-	min-height: 560px;
+	min-height: 550px;
 	  position: relative;
 }
 /*--- slider-css --*/
@@ -270,7 +276,7 @@ height: 35px;
   right: 0;
  } 
 .banner-text{
- padding:10em 0 1em;
+ padding:10em 7em 2em;
  color:#fff;
    width: 50%;
 }
@@ -285,6 +291,7 @@ height: 35px;
 .banner-text p{
 	font-size:1.2em;
 	margin: 0.3em 0 1em;
+	white-space:nowrap;
 }
 .banner-text a{
 	text-decoration: none;
@@ -428,6 +435,15 @@ height: 35px;
 	display: block;
 	font-weight: 500;
 }
+.b-animate p{
+	display:block;
+	font-size: 1.5em;
+	padding-top: 55px;
+	margin: 0;
+	display: block;
+	font-weight: 500;
+}
+
 
 /* lt-ie9 */
 .b-animate-go:hover .b-animate{
@@ -2146,6 +2162,8 @@ a.item_add p.number {
 .box_1 h3 {
   font-size: 1em;
 }
+
+
 .header-top {
   padding: 10px 0;
 }

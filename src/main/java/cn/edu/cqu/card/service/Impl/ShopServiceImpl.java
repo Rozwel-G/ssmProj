@@ -22,4 +22,9 @@ public class ShopServiceImpl implements ShopService{
 	public Shop showShop(Integer shopId) {
 		return shopMapper.selectByPrimaryKey(shopId);
 	}
+	
+	@Override
+	public Shop showShops(Integer shopId) {
+		return shopMapper.selectKey(shopId);
+	}
 }

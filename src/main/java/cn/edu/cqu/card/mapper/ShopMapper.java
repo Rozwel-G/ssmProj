@@ -15,6 +15,8 @@ public interface ShopMapper {
 	int insertSelective(Shop record);
 
 	Shop selectByPrimaryKey(Integer shopId);
+	
+	Shop selectKey(Integer shopId);
 
 	int updateByPrimaryKeySelective(Shop record);
 
