@@ -6,4 +6,6 @@ public interface ShopService {
 	void updateShop(Shop shop);
 
 	Shop showShop(Integer shopId);
+
+	Shop showShops(Integer shopId);
 }

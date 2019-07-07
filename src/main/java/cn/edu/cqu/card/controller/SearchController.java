@@ -12,28 +12,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cn.edu.cqu.card.model.Commodity;
 import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.service.SearchService;
+import cn.edu.cqu.card.service.ShopService;
 
 @Controller
 public class SearchController {
 
 	@Autowired
 	SearchService searchService;
+	
+	@Autowired
+	ShopService shopService;
 
-	// 搜索页
+	// 鎼滅储
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String enterSearch() {
-		return "/search/index";
-	}
-
-	// 执行搜索
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public String search(@RequestParam("keyword") String keyword, Model model) {
-		String[] area = new String[] { "重庆", "重庆", "南岸", "弹子石" };
+		String[] area = new String[] { "", "", "", "" };
 		List<Shop> shops = searchService.searchShop(keyword, area);
-		model.addAttribute("shops", shops);
 		List<Commodity> commodities = searchService.searchCommodities(keyword, area);
-		model.addAttribute("commodities", commodities);
-		return "/search/show";
+		for(Commodity comm : commodities) {
+			Shop shop = shopService.showShop(comm.getShopId());
+			System.out.println(shop);
+			if(!shops.contains(shop)) {
+				shops.add(shop);
+			}			
+		}
+		model.addAttribute("shops", shops);
+		return "/search/list";
 	}
-
 }

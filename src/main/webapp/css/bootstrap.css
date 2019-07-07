@@ -1114,6 +1114,33 @@ figure {
 img {
   vertical-align: middle;
 }
+.img-responsive5{
+  background-size: 100%;
+  background-repeat:no-repeat;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+.img-responsive4{
+  background-size: 100%;
+  background-repeat:no-repeat;
+  display: block;
+  height: 150px;
+  width: 150px;
+}
+.img-responsive3{
+  background-size: cover;
+    display: block;
+  height: 500px;
+  width: 500px;
+}
+.img-responsive2{
+  background-size: 100%;
+  background-repeat:no-repeat;
+    display: block;
+  height: 300px;
+  width: 300px;
+}
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
@@ -1573,6 +1600,11 @@ pre code {
 .container {
   padding-right: 15px;
   padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container2 {
   margin-right: auto;
   margin-left: auto;
 }
