@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.model.SpendingLog;
 import cn.edu.cqu.card.service.ShopStatisticService;
 
@@ -23,38 +27,44 @@ public class ShopStatisticController {
 	ShopStatisticService shopStatisticService;
 
 	// 商家统计页面入口
-	@RequestMapping(value = "/shop_statistic", method = RequestMethod.GET)
+	@RequestMapping(value = "/shop/menu/statistic", method = RequestMethod.GET)
 	public String enterShopStatistic() {
-		return "/shopstatistic/index";
+		return "/shop/menu/statistic/index";
 	}
 
 	// 查询当日
-	@RequestMapping(value = "/shop_statistic/today", method = RequestMethod.GET)
-	public String listTodaySpendingLog(Model model) {
+	@RequestMapping(value = "/shop/menu/statistic/today", method = RequestMethod.GET)
+	public String listTodaySpendingLog(Model model, HttpServletRequest request) {
 
 		// 实际应该使用session获取shopId
-		List<SpendingLog> spendingLogs = shopStatisticService.getTodaySpendingLogs(1);
+		HttpSession session = request.getSession();
+		Shop shop = (Shop)session.getAttribute("shop");
+		List<SpendingLog> spendingLogs = shopStatisticService.getTodaySpendingLogs(shop.getShopId());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", shopStatisticService.computeTotalMoney(spendingLogs));
-		return "/shopstatistic/show";
+		model.addAttribute("queryType", "今日流水");
+		return "/shop/menu/statistic/show";
 	}
 
 	// 查询总共
-	@RequestMapping(value = "/shop_statistic/total", method = RequestMethod.GET)
-	public String listTotalSpendingLog(Model model) {
+	@RequestMapping(value = "/shop/menu/statistic/total", method = RequestMethod.GET)
+	public String listTotalSpendingLog(Model model, HttpServletRequest request) {
 
 		// 实际应该使用session获取shopId
-		List<SpendingLog> spendingLogs = shopStatisticService.getAllSpendingLogs(1);
+		HttpSession session = request.getSession();
+		Shop shop = (Shop)session.getAttribute("shop");
+		List<SpendingLog> spendingLogs = shopStatisticService.getAllSpendingLogs(shop.getShopId());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", shopStatisticService.computeTotalMoney(spendingLogs));
-		return "/shopstatistic/show";
+		model.addAttribute("queryType", "历史流水");
+		return "/shop/menu/statistic/show";
 	}
 
 	// 查询给定范围的流水
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value = "/shop_statistic/time", method = RequestMethod.POST)
+	@RequestMapping(value = "/shop/menu/statistic/time", method = RequestMethod.POST)
 	public String listTotalSpendingLog(@RequestParam("begin") String begin, @RequestParam("end") String end,
-			Model model) {
+			Model model,  HttpServletRequest request) {
 		// 对日期进行处理
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -68,10 +78,14 @@ public class ShopStatisticController {
 			endDate.setSeconds(59);
 
 			// 实际应该使用session获取shopId
-			List<SpendingLog> spendingLogs = shopStatisticService.getSpendingLogs(1, beginDate, endDate);
+			HttpSession session = request.getSession();
+			Shop shop = (Shop)session.getAttribute("shop");
+			List<SpendingLog> spendingLogs = shopStatisticService.getSpendingLogs(shop.getShopId(), beginDate, endDate);
 			model.addAttribute("spendingLogs", spendingLogs);
 			model.addAttribute("totalMoney", shopStatisticService.computeTotalMoney(spendingLogs));
-			return "/shopstatistic/show";
+			String type = begin + "~" + end + " 流水";
+			model.addAttribute("queryType", type);
+			return "/shop/menu/statistic/show";
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
