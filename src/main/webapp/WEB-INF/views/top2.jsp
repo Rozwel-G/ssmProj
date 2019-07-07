@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<meta charset="UTF-8">
 		<title>top</title>
 	</head>

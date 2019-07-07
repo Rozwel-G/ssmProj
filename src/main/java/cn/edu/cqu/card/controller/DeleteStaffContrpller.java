@@ -14,7 +14,7 @@ public class DeleteStaffContrpller {
 	@Autowired
 	private StaffService staffService;
 	
-	@GetMapping("/shop/delete")
+	@GetMapping("/shop/menu/staff/delete")
 	public String deleteStaff(@RequestParam("account") String staffAccount)
 	{
 		Staff staff = new Staff();

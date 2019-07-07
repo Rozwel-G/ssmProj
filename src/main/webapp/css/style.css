@@ -13,8 +13,117 @@ ul{
 	padding: 0;
 	margin: 0;	
 }
+.shopinfo{
+	text-align:center;
+	margin-top:30px;
+}
+.btn{
+	width:100%;
+	text-align:center;
+}
 h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;	
+}
+.staffinfo{
+	margin:0 81px;
+}
+.inputdiv{
+	display:inline-block;
+	width:80%;
+	margin:0;
+	height:150px;
+}
+.imgdiv{
+	position:absolute;
+	right:200px;
+	height:150px;
+	display:inline-block;
+	width:19%;
+}
+.imgdiv >div{
+	border:2px solid black;
+}
+.imageauto{
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+}
+.inputdiv > div{
+	margin:5px 0;
+}
+.inputdiv span{
+	display:inline-block;
+	width:12%;
+	text-align:center;
+}
+.inputdiv span{
+	border:none;
+}
+.inputdiv input{
+	margin-left:17px;
+	border-bottom:1 solid black;
+}
+.m-menu > li > a {
+	float: left;
+	width: 80%;
+  	margin: 0.3em 0;
+	display:inline-block;
+	position: relative;
+	color: #000;
+	font-size: 1.1em;
+	text-decoration:none;
+	
+}
+.m-menu > li{
+	list-style:none;
+}
+.m-menu > li > .input {
+	width: 20%;
+	margin: 0.3em 0;
+	float: right;
+	background-color: rgba(0,0,0,0);
+	border:none;
+}
+.m-menu > li > a:hover{
+	color:#EF5F21;
+}
+.m-menu > li >.input:hover{
+	color:#EF5F21;
+}
+ul.divide{
+	font-size : 20px;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	height: 24px;
+	width: 100%;
+	line-height: 24px;
+}
+ul.divide  li{display: inline;}
+ul.divide  li > a{
+	color: orange;
+	padding-left: 8px;
+	padding-right: 8px;
+	border-radius: 5px;
+	transition: background-color .3s;
+	text-decoration: none;
+}
+.center{
+	text-align: center;
+}
+ul.divide  li > a.tag{
+	font-size: 13px;
+}
+ul.divide  li > a.active{
+	background-color: #4CAF50;
+	padding-left: 8px;
+	padding-right: 8px;
+	border-radius: 5px;
+	color: white;
+}
+ul.divide  li > a:hover:not(.active){
+	background-color: #ddd;
 }
 /*----*/
 .itemContainer{
@@ -850,6 +959,23 @@ h3.cate {
 .of-left{
 	 border-bottom: 1px solid #000;
 }
+.of-left-reol{
+	display:inline-block;
+	width:60%;
+}
+.of-right-reol{
+	display:inline-block;
+	text-align: center;
+	position: relative;
+	width:30%;
+	margin:0;
+	background: #fe7300;
+}
+.of-right-reol a{
+	font-size: 1.1em;
+	text-decoration:none;
+	color:#fff;
+}
 .product-go {
   margin-top: 2em;
 }
@@ -909,7 +1035,7 @@ ul.kid-menu{
 .menu ul li a:hover{
 	color:#EF5F21;
 }
-ul.kid-menu li,.menu ul li{
+ul.kid-menu li,.menu ul li,.m-menu ul li{
 	list-style: none;	
 }
 .sellers {
