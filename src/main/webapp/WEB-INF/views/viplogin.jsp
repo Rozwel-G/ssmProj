@@ -53,17 +53,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--content-->
 		<div class="container">
 			<div class="account">
-				<h1>Account</h1>
+				<h1>登录</h1>
 				<div class="account-pass">
 					<div class="col-md-8 account-top">
 						<form action = "/user/login" method = "post">
 							<div>
 								<span>手机号</span>
-								<input type="text">
+								<input type="text" name = "telephone">
 							</div>
 							<div>
 								<span>密码</span>
-								<input type="password">
+								<input type="password" name = "password">
 							</div>
 							<input type="submit" value="Login">
 						</form>

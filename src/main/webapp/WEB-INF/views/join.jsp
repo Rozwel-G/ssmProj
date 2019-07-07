@@ -123,10 +123,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span>所有人邮箱</span>
 							<input type = "text" name = "ownerEmail"/>
 						</div>
-						<div>
-							<span>所有人邮箱</span>
-							<input type = "text" name = "ownerTitle"/>
-						</div>
 						<input type="submit" value="submit">
 
 					</div>

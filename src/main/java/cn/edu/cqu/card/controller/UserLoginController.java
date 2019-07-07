@@ -30,11 +30,11 @@ public class UserLoginController {
 		try {
 			User user = userLoginService.Login(telephone, password);
 			Session.setAttribute("user", user);
-			return "redirect:/index/user";
+			return "redirect:/user/menu";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "UserLogin";
+		return "viplogin";
 		
 	}
 	

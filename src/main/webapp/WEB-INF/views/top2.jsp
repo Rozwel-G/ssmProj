@@ -18,10 +18,10 @@
 				</div>
 				<div class="header-left">
 					<ul>
-						<li><a href="viplogin.html">会员登录</a></li>
-						<li><a href="register.html">会员注册</a></li>
-						<li><a href="shoplogin.html">商家登录</a></li>
-						<li><a href="join.html">申请加盟</a></li>
+						<li><a href="/user/login">会员登录</a></li>
+						<li><a href="/user/register">会员注册</a></li>
+						<li><a href="/shop/login">商家登录</a></li>
+						<li><a href="/shop/join">申请加盟</a></li>
 					</ul>
 					<div class="clearfix"> </div>
 				</div>

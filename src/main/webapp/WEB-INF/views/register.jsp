@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--content-->
 		<div class=" container">
 			<div class=" register">
-				<h1>Register</h1>
+				<h1>注册</h1>
 				<form action ="/user/register" method = "post" enctype = "multipart/form-data">
 					<div class="col-md-6 register-top-grid">
 						<div>
@@ -104,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div>
 							<span>地址-详细</span>
-							<input type="text"name="userDetail">
+							<input type="text" name="userDetial">
 						</div>
 					</div>
 					<div class="col-md-6 register-top-grid">
@@ -114,7 +114,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div>
 							<span>会员证件类型</span>
-							<select name = "userIdType">
+							<select name = "userIdType" style="width:100%; padding: 1em;">
 					  			<option value ="身份证">身份证</option>
 					  			<option value ="港澳通行证">港澳通行证</option>
 					  			<option value="驾驶证">驾驶证</option>

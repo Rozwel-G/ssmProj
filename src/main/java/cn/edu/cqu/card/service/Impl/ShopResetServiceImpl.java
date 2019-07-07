@@ -1,13 +1,13 @@
 package cn.edu.cqu.card.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cn.edu.cqu.card.mapper.StaffMapper;
-import cn.edu.cqu.card.mapper.UserMapper;
 import cn.edu.cqu.card.model.Staff;
-import cn.edu.cqu.card.model.User;
 import cn.edu.cqu.card.service.ShopResetService;
 
+@Service
 public class ShopResetServiceImpl implements ShopResetService {
 
 	@Autowired

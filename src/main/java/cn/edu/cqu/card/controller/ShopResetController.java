@@ -9,11 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.edu.cqu.card.model.Staff;
-import cn.edu.cqu.card.model.User;
-import cn.edu.cqu.card.service.ShopRegisterService;
 import cn.edu.cqu.card.service.ShopResetService;
-import cn.edu.cqu.card.service.StaffService;
-import cn.edu.cqu.card.service.UserResetService;
 
 @Controller
 public class ShopResetController {

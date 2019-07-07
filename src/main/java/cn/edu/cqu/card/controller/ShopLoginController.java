@@ -29,11 +29,11 @@ public class ShopLoginController {
 		try {
 			Staff staff = shopLoginService.login(telephone, password);
 			Session.setAttribute("staff", staff);
-			return "ShopIndex";
+			return "redirect:/shop/menu";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/shop/menu";
+		return "shoplogin";
 		
 	}
 	
