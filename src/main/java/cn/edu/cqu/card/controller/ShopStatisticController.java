@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.model.SpendingLog;
 import cn.edu.cqu.card.service.ShopStatisticService;
 
@@ -22,40 +26,46 @@ public class ShopStatisticController {
 	@Autowired
 	ShopStatisticService shopStatisticService;
 
-	// ÉÌ¼ÒÍ³¼ÆÒ³ÃæÈë¿Ú
-	@RequestMapping(value = "/shop_statistic", method = RequestMethod.GET)
+	// å•†å®¶ç»Ÿè®¡é¡µé¢å…¥å£
+	@RequestMapping(value = "/shop/menu/statistic", method = RequestMethod.GET)
 	public String enterShopStatistic() {
-		return "/shopstatistic/index";
+		return "/shop/menu/statistic/index";
 	}
 
-	// ²éÑ¯µ±ÈÕ
-	@RequestMapping(value = "/shop_statistic/today", method = RequestMethod.GET)
-	public String listTodaySpendingLog(Model model) {
+	// æŸ¥è¯¢å½“æ—¥
+	@RequestMapping(value = "/shop/menu/statistic/today", method = RequestMethod.GET)
+	public String listTodaySpendingLog(Model model, HttpServletRequest request) {
 
-		// Êµ¼ÊÓ¦¸ÃÊ¹ÓÃsession»ñÈ¡shopId
-		List<SpendingLog> spendingLogs = shopStatisticService.getTodaySpendingLogs(1);
+		// å®é™…åº”è¯¥ä½¿ç”¨sessionè·å–shopId
+		HttpSession session = request.getSession();
+		Shop shop = (Shop)session.getAttribute("shop");
+		List<SpendingLog> spendingLogs = shopStatisticService.getTodaySpendingLogs(shop.getShopId());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", shopStatisticService.computeTotalMoney(spendingLogs));
-		return "/shopstatistic/show";
+		model.addAttribute("queryType", "ä»Šæ—¥æµæ°´");
+		return "/shop/menu/statistic/show";
 	}
 
-	// ²éÑ¯×Ü¹²
-	@RequestMapping(value = "/shop_statistic/total", method = RequestMethod.GET)
-	public String listTotalSpendingLog(Model model) {
+	// æŸ¥è¯¢æ€»å…±
+	@RequestMapping(value = "/shop/menu/statistic/total", method = RequestMethod.GET)
+	public String listTotalSpendingLog(Model model, HttpServletRequest request) {
 
-		// Êµ¼ÊÓ¦¸ÃÊ¹ÓÃsession»ñÈ¡shopId
-		List<SpendingLog> spendingLogs = shopStatisticService.getAllSpendingLogs(1);
+		// å®é™…åº”è¯¥ä½¿ç”¨sessionè·å–shopId
+		HttpSession session = request.getSession();
+		Shop shop = (Shop)session.getAttribute("shop");
+		List<SpendingLog> spendingLogs = shopStatisticService.getAllSpendingLogs(shop.getShopId());
 		model.addAttribute("spendingLogs", spendingLogs);
 		model.addAttribute("totalMoney", shopStatisticService.computeTotalMoney(spendingLogs));
-		return "/shopstatistic/show";
+		model.addAttribute("queryType", "å†å²æµæ°´");
+		return "/shop/menu/statistic/show";
 	}
 
-	// ²éÑ¯¸ø¶¨·¶Î§µÄÁ÷Ë®
+	// æŸ¥è¯¢ç»™å®šèŒƒå›´çš„æµæ°´
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value = "/shop_statistic/time", method = RequestMethod.POST)
+	@RequestMapping(value = "/shop/menu/statistic/time", method = RequestMethod.POST)
 	public String listTotalSpendingLog(@RequestParam("begin") String begin, @RequestParam("end") String end,
-			Model model) {
-		// ¶ÔÈÕÆÚ½øĞĞ´¦Àí
+			Model model,  HttpServletRequest request) {
+		// å¯¹æ—¥æœŸè¿›è¡Œå¤„ç†
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date beginDate = dateFormat.parse(begin);
@@ -67,11 +77,15 @@ public class ShopStatisticController {
 			endDate.setMinutes(59);
 			endDate.setSeconds(59);
 
-			// Êµ¼ÊÓ¦¸ÃÊ¹ÓÃsession»ñÈ¡shopId
-			List<SpendingLog> spendingLogs = shopStatisticService.getSpendingLogs(1, beginDate, endDate);
+			// å®é™…åº”è¯¥ä½¿ç”¨sessionè·å–shopId
+			HttpSession session = request.getSession();
+			Shop shop = (Shop)session.getAttribute("shop");
+			List<SpendingLog> spendingLogs = shopStatisticService.getSpendingLogs(shop.getShopId(), beginDate, endDate);
 			model.addAttribute("spendingLogs", spendingLogs);
 			model.addAttribute("totalMoney", shopStatisticService.computeTotalMoney(spendingLogs));
-			return "/shopstatistic/show";
+			String type = begin + "~" + end + " æµæ°´";
+			model.addAttribute("queryType", type);
+			return "/shop/menu/statistic/show";
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

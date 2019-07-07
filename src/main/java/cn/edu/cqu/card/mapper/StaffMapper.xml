@@ -21,10 +21,11 @@
   	<id column="staffPhone" property="STAFF_PHONE"/>
   	<result column="shopId" property="shopId"/>
   	<result column="password" property="STAFF_PASSWORD"/>
-  	<result column="staffType" property="staffType"/>
+  	<result column="staffType" property="staff_Type"/>
+  	<result column="staffPic" property="staff_pic"/>
   </resultMap>
    <select id="findShopStaffs" resultMap="staff" parameterType="cn.edu.cqu.card.model.Shop">
-   		SELECT STAFF_PHONE,shop_Id,STAFF_PASSWORD,staff_Type
+   		SELECT STAFF_PHONE,shop_Id,STAFF_PASSWORD,staff_Type,staff_pic
    		FROM staff
    		WHERE shop_Id=#{shopId,jdbcType=VARCHAR}
    </select>

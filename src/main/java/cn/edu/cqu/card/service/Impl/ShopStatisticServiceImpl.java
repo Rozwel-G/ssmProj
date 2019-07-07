@@ -34,7 +34,6 @@ public class ShopStatisticServiceImpl implements ShopStatisticService {
 		today.setHours(0);
 		today.setMinutes(0);
 		today.setSeconds(0);
-		// 计算下一天
 		Calendar ca = Calendar.getInstance();
 		ca.setTime(today);
 		ca.add(Calendar.DATE, 1);

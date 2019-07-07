@@ -19,7 +19,7 @@ public class ShopStaffController {
 	@Autowired
 	private StaffService staffService;
 	
-	@GetMapping("/shop/list")
+	@GetMapping("/shop/menu/staff/list")
 	public String listStaff(Model model,HttpSession session)
 	{
 		//Shop shop = (Shop)session.getAttribute("account");
@@ -28,6 +28,6 @@ public class ShopStaffController {
 		List<Staff> staffs = staffService.findShopStaffs(shop);
 		model.addAttribute("staffs",staffs);
 		//System.out.println(staffs.toString());
-		return "shop/stafflist";
+		return "shop/menu/staff/list";
 	}
 }

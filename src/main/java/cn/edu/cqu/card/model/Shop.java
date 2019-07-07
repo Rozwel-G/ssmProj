@@ -146,5 +146,12 @@ public class Shop {
 		return "Shop [shopId=" + shopId + ", shopName=" + shopName + ", shopProvince=" + shopProvince + ", shopCity="
 				+ shopCity + ", shopCounty=" + shopCounty + ", shopDetail=" + shopDetail + "]";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Shop shop = (Shop)obj;
+		return this.getShopId().equals(shop.getShopId());
+	}
+
 
 }

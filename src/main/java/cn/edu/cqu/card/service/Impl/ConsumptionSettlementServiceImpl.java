@@ -18,16 +18,16 @@ public class ConsumptionSettlementServiceImpl implements ConsumptionSettlementSe
 
 
 	@Autowired
-	private UserMapper usermapper;
+	private UserMapper userMapper;
 	@Autowired
-	private SpendingLogMapper spendinglogmapper;
+	private SpendingLogMapper spendingLogMapper;
 	@Autowired
-	private ScoreLogMapper scorelogmapper;
+	private ScoreLogMapper scoreLogMapper;
 	@Override
-	public int consumptionSettlement(int shopId,float price,String userPhone) {
+	public int consumptionSettlement(int shopId,float price,String userPhone,int score) {
 		// TODO Auto-generated method stub
-		User user=usermapper.selectByPrimaryKey(userPhone);
-		if(user.getUserBalance()<price)
+		User user=userMapper.selectByPrimaryKey(userPhone);
+		if(user.getUserBalance()<(price-score/100.0))
 		{
 			return -1;
 		}
@@ -36,26 +36,35 @@ public class ConsumptionSettlementServiceImpl implements ConsumptionSettlementSe
 
 		
 		
-		user.setUserBalance(user.getUserBalance()-price);
-		user.setUserScore(user.getUserScore()+(int)price);
+		user.setUserBalance(user.getUserBalance()-(float)(price-score/100.0));
+		user.setUserScore(user.getUserScore()+(int)(price-score/100.0)-score);
 		
 		ScoreLog scorelog=new ScoreLog();
-		scorelog.setScoreLogScore((int)price);
+		scorelog.setScoreLogScore((int)(price-score/100.0));
 		scorelog.setScoreLogTime(time);
 		scorelog.setUserPhone(userPhone);
-		scorelogmapper.insert(scorelog);
+		if(price-(score/100.0)!=0) {
+			scoreLogMapper.insert(scorelog);
+		}
 		
-		usermapper.updateByPrimaryKey(user);
+		userMapper.updateByPrimaryKey(user);
 		SpendingLog spendinglog=new SpendingLog();
 		spendinglog.setShopId(shopId);
 		spendinglog.setTime(time);
 		spendinglog.setUserPhone(userPhone);
 		spendinglog.setMoney(price);
 		spendinglog.setScoreLogId(scorelog.getScoreLogId());
-		spendinglogmapper.insert(spendinglog);
+		spendingLogMapper.insert(spendinglog);
 		
 
 		return 0;
 	}
+	@Override
+	public int checkScore(String userPhone) {
+		User user=userMapper.selectByPrimaryKey(userPhone);
+		return user.getUserScore();
+	}
+
+	
 
 }

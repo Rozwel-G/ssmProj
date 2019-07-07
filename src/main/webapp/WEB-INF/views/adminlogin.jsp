@@ -18,7 +18,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			addEventListener("load", function() {
 				setTimeout(hideURLbar, 0);
 			}, false);
-
 			function hideURLbar() {
 				window.scrollTo(0, 1);
 			}
@@ -68,11 +67,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<input type="submit" value="Login">
 						</form>
 					</div>
-
 					<div class="clearfix"> </div>
 				</div>
 			</div>
-
 		</div>
 
 		<!--//content-->

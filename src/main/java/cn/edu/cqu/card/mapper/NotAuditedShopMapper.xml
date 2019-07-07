@@ -48,7 +48,7 @@
 		where AUDITED_ID = #{auditedId,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert"
-		parameterType="cn.edu.cqu.card.model.NotAuditedShop">
+		parameterType="cn.edu.cqu.card.model.NotAuditedShop" useGeneratedKeys="true" keyProperty="auditedId" >
 		insert into not_audited_shop (AUDITED_ID, SHOP_NAME, SHOP_TYPE,
 		SHOP_INTRO, SHOP_PIC, SHOP_PROVINCE,
 		SHOP_CITY, SHOP_COUNTY, SHOP_DETAIL,

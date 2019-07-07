@@ -12,5 +12,9 @@ public interface CommodityService {
 	
 	int deleteCommodity(int comId);
 	
-	boolean check(String comName,int shopId);
+	boolean check(Commodity commodity);
+
+	Commodity commodity(int commodityId);
+
+
 }
