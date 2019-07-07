@@ -1,7 +1,5 @@
 package cn.edu.cqu.card.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +12,13 @@ public class RechargeController {
 
 	@Autowired
 	private RechargeService rechargeService;
-	@GetMapping("/recharge")
+	@GetMapping("/user/menu/recharge")
 	public String get() {
-		return "recharge";
+		return "usermenu/recharge";
 	}
 	@PutMapping("/recharge")
 	public String recharge(float money,String userPhone) {
 		rechargeService.recharge(money, userPhone);
-		return "redirect:/result";
+		return "redirect:/user/menu/recharge?code=100";
 	}
 }

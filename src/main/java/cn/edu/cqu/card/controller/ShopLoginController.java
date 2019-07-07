@@ -19,7 +19,7 @@ public class ShopLoginController {
 	@GetMapping(value = "/login/shop")
 	public String get()
 	{
-		return "ShopLogin";
+		return "shoplogin_2";
 	}
 	
 	@RequestMapping(value = "/login/shop", method = RequestMethod.POST)
@@ -32,7 +32,7 @@ public class ShopLoginController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "ShopLogin";
+		return "shoplogin_2";
 		
 	}
 	
