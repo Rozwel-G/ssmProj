@@ -26,10 +26,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			}
 		</script>
 		
-		<!--fonts-->
+		<!--fonts
 		<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-		<!--//fonts-->
+		fonts-->
 		<!-- start menu -->
 		<link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 		<script type="text/javascript" src="/js/memenu.js"></script>
@@ -39,26 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<body>
 		<!--header-->
 		<div class="header">
-			<div class="header-top">
-				<div class="container">
-					<div class="search">
-						<form>
-							<input type="text" value="Search " onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}">
-							<input type="submit" value="Go">
-						</form>
-					</div>
-					<div class="header-left">
-						<ul>
-							<li><a href="viplogin.html">会员登录</a></li>
-							<li><a href="register.html">会员注册</a></li>
-							<li><a href="shoplogin.html">商家登录</a></li>
-							<li><a href="join.html">申请加盟</a></li>
-						</ul>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
+			<jsp:include page="/top.jsp"></jsp:include>
 			<div class="container">
 				<div class="head-top">
 					<div class="logo">
@@ -77,17 +58,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="col-md-reol product-price">
 
-					<div class=" rsidebar span_1_of_right" style="height:200px">
+					<div class=" rsidebar span_1_of_right" style="height:400px">
 						<div class="of-left">
 							<h3 class="cate of-left-reol">Categories</h3>
 							<div class="of-right-reol">
-							<a href="#">添加员工</a>
+							<a href="staffInfo?staff=new">添加员工</a>
 							</div>
 						</div>
 						
 						<ul class="m-menu">
 							<c:forEach items="${requestScope.staffs}" var="a">
-								<li> <a href="#">${a.staffPhone }</a><a class="input" onclick="return confirm('你确定要删除吗？');" href="/shop/menu/staff/delete?account=${a.staffPhone }">删除</a></li>
+								<li> <a href="staffInfoUpdate?staff=${a.staffPhone }">${a.staffPhone }</a><a class="input" onclick="return confirm('你确定要删除吗？');" href="/shop/menu/staff/delete?account=${a.staffPhone }">删除</a></li>
 							</c:forEach>
 							
 						</ul>
@@ -122,11 +103,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					function goPage(num){
 						var items = $(".m-menu li").length;
 						num  = (num<=0)?1:num;
-						var nums = Math.ceil(items / 5); ;
+						var nums = Math.ceil(items / 10); ;
 						num = (num>nums)?nums:num;
 						console.log(num);
-						var startRow = (num-1)*5+1;
-						var endRow = num*5;
+						var startRow = (num-1)*10+1;
+						var endRow = num*10;
 
 						endRow = (endRow>items)?items:endRow;
 
@@ -165,10 +146,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					window.onload = goPage(1);
 				</script>
 			<div class="clearfix"></div>
-			<div class="footer-class">
-				<p>Copyright &copy; 2019. Haochijie All rights reserved.</p>
-
+			<jsp:include page="/foot.jsp" flush="true"></jsp:include>
 			</div>
 		</div>
+		
 	</body>
 </html>

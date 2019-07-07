@@ -31,4 +31,14 @@ public class StaffServiceImpl implements StaffService{
 		return staffMapper.deleteByPrimaryKey(staff.getStaffPhone());
 	}
 
+	@Override
+	public Staff findStaff(String staffPhone) {
+		return staffMapper.selectByPrimaryKey(staffPhone);
+	}
+
+	@Override
+	public int update(Staff staff) {
+		return staffMapper.updateByPrimaryKey(staff);
+	}
+
 }

@@ -16,6 +16,46 @@ ul{
 h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;	
 }
+.staffinfo{
+	width:100%;
+}
+.inputdiv{
+	display:inline-block;
+	width:80%;
+	margin:0;
+	height:150px;
+}
+.imgdiv{
+	position:absolute;
+	right:200px;
+	height:150px;
+	display:inline-block;
+	width:19%;
+}
+.imgdiv >div{
+	border:2px solid black;
+}
+.imageauto{
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+}
+.inputdiv > div{
+	margin:5px 0;
+}
+.inputdiv span{
+	display:inline-block;
+	width:12%;
+	text-align:center;
+}
+.inputdiv span{
+	border:none;
+}
+.inputdiv input{
+	margin-left:17px;
+	border-bottom:1 solid black;
+}
 .m-menu > li > a {
 	float: left;
 	width: 80%;
