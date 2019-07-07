@@ -13,11 +13,19 @@ ul{
 	padding: 0;
 	margin: 0;	
 }
+.shopinfo{
+	text-align:center;
+	margin-top:30px;
+}
+.btn{
+	width:100%;
+	text-align:center;
+}
 h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;	
 }
 .staffinfo{
-	width:100%;
+	margin:0 81px;
 }
 .inputdiv{
 	display:inline-block;

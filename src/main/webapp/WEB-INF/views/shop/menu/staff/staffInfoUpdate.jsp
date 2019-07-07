@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	
-	<div class="staffinfo">
+	<div class="staffinfo header">
 			<form action="/shop/menu/staff/updateStaffAccount" method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
 			<!--  staffinfo -->
 				<div class="inputdiv">
@@ -74,12 +74,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				
 			<!-- shopinfo -->
-				<div style="text-align:center">
+				<div class="shopinfo">
 					<span>商家名称：${requestSession.shop.shopName }</span>
 					<span>商家位置：${requestSession.shop.shopCity }${requestSession.shop.shopProvince }</span>
 				</div>
 				
-				<div style="text-align:center">
+				<div class="btn" style="text-align:center">
 					<input type="submit" value="提交" />
 					<input type="button" value="取消"" onclick="window.location.href = 'list'" />
 				</div>
@@ -130,6 +130,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		if(word1 != word2)
 		{
 			$("#tips").text("密码不一致");
+		}
+		else{
+			$("#tips").text("密码一致！");
 		}
 	}
 	$("#file").change(function(){  
