@@ -22,8 +22,14 @@
     SHOP_DETAIL, SHOP_PHONE, OWNER_TITLE, OWNER_NAME, OWNER_PHONE, OWNER_EMAIL
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select SHOP_NAME
-    <!--  <include refid="Base_Column_List" />-->
+    select
+    <include refid="Base_Column_List" />
+    from shop 
+    where SHOP_ID = #{shopId,jdbcType=INTEGER}
+  </select>
+    <select id="selectKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+	select
+	<include refid="Base_Column_List" />
     from shop 
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </select>
@@ -196,7 +202,7 @@
       OWNER_EMAIL = #{ownerEmail,jdbcType=VARCHAR}
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </update>
-    <select id="searchByNameKeyword" parameterType="String" resultType="cn.edu.cqu.card.model.Shop">
+  <select id="searchByNameKeyword" resultType="cn.edu.cqu.card.model.Shop">
     select
   	<include refid="Base_Column_List" />
   	from shop

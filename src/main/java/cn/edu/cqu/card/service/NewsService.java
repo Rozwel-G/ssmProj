@@ -7,25 +7,25 @@ import cn.edu.cqu.card.model.News;
 public interface NewsService {
 
 	/**
-	 * @return ĞÂÎÅÁĞ±í£¬°´Ê±¼äÅÅĞò
+	 * @return æ–°é—»åˆ—è¡¨ï¼ŒæŒ‰æ—¶é—´æ’åº
 	 */
 	List<News> listNews();
 
 	/**
-	 * @param newsId ĞÂÎÅµÄÖ÷¼ü
-	 * @return NewsÊµÀı
+	 * @param newsId æ–°é—»çš„ä¸»é”®
+	 * @return Newså®ä¾‹
 	 */
 	News getNews(int newsId);
 
 	/**
 	 * @param news
-	 * @return ³É¹¦Ôò·µ»Ø1
+	 * @return æˆåŠŸåˆ™è¿”å›1
 	 */
 	int addNews(News news);
 
 	
 	/**
-	 * @param id É¾³ıÖ¸¶¨idµÄĞÂÎÅ
+	 * @param id åˆ é™¤æŒ‡å®šidçš„æ–°é—»
 	 */
 	int delete(int id);
 

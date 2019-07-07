@@ -15,4 +15,5 @@ public interface SmsService {
 	 * @return	是否成功
 	 */
 	boolean sendPassNotice(String code, String phoneNumber);
+	
 }

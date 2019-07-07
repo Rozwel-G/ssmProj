@@ -9,27 +9,27 @@ public interface ShopStatisticService {
 
 	/**
 	 * @param shopId
-	 * @return ËùÑ¡ÉÌÆÌµÄËùÓĞÏû·Ñ¼ÇÂ¼
+	 * @return æ‰€é€‰å•†é“ºçš„æ‰€æœ‰æ¶ˆè´¹è®°å½•
 	 */
 	List<SpendingLog> getAllSpendingLogs(int shopId);
 
 	/**
 	 * @param shopId
-	 * @param begin  ¿ªÊ¼Ê±¼ä
-	 * @param end    ½áÊøÊ±¼ä
-	 * @return ËùÑ¡ÉÌÆÌ¸ø¶¨Ê±¼äÄÚµÄÏû·Ñ¼ÇÂ¼
+	 * @param begin  å¼€å§‹æ—¶é—´
+	 * @param end    ç»“æŸæ—¶é—´
+	 * @return æ‰€é€‰å•†é“ºç»™å®šæ—¶é—´å†…çš„æ¶ˆè´¹è®°å½•
 	 */
 	List<SpendingLog> getSpendingLogs(int shopId, Date begin, Date end);
 
 	/**
 	 * @param shopId
-	 * @return ËùÑ¡ÉÌÆÌ½ñÌìµÄÏû·Ñ¼ÇÂ¼
+	 * @return æ‰€é€‰å•†é“ºä»Šå¤©çš„æ¶ˆè´¹è®°å½•
 	 */
 	List<SpendingLog> getTodaySpendingLogs(int shopId);
 
 	/**
-	 * @param spendingLogs Ïû·Ñ¼ÇÂ¼µÄ¼¯ºÏ
-	 * @return Ïû·Ñ×Ü¶î
+	 * @param spendingLogs æ¶ˆè´¹è®°å½•çš„é›†åˆ
+	 * @return æ¶ˆè´¹æ€»é¢
 	 */
 	float computeTotalMoney(List<SpendingLog> spendingLogs);
 

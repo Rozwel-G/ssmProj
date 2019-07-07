@@ -7,16 +7,16 @@ import cn.edu.cqu.card.model.Shop;
 
 public interface SearchService {
 	/**
-	 * @param nameKeyword ÉÌ»§Ãû³Æ¹Ø¼ü×Ö
-	 * @param area        µØÓò¹Ø¼ü×Ö£¬º¬4¸ö×Ö¶Î£¬ÒÀ´ÎÎª Ê¡¡¢ÊĞ¡¢ÏØ£¨Çø£©¡¢ÏêÏ¸µØÖ·¡£´Ë²ÎÊı¿ÉÉèÖÃÎª¿Õ
-	 * @return ÉÌ»§ÁĞ±í
+	 * @param nameKeyword å•†æˆ·åç§°å…³é”®å­—
+	 * @param area        åœ°åŸŸå…³é”®å­—ï¼Œå«4ä¸ªå­—æ®µï¼Œä¾æ¬¡ä¸º çœã€å¸‚ã€å¿ï¼ˆåŒºï¼‰ã€è¯¦ç»†åœ°å€ã€‚æ­¤å‚æ•°å¯è®¾ç½®ä¸ºç©º
+	 * @return å•†æˆ·åˆ—è¡¨
 	 */
 	List<Shop> searchShop(String nameKeyword, String[] area);
 
 	/**
-	 * @param nameKeyword ÉÌÆ·Ãû³Æ¹Ø¼ü×Ö
-	 * @param area        µØÓò¹Ø¼ü×Ö£¬º¬4¸ö×Ö¶Î£¬ÒÀ´ÎÎª Ê¡¡¢ÊĞ¡¢ÏØ£¨Çø£©¡¢ÏêÏ¸µØÖ·¡£´Ë²ÎÊı¿ÉÉèÖÃÎª¿Õ
-	 * @return ÉÌ»§ÁĞ±í
+	 * @param nameKeyword å•†å“åç§°å…³é”®å­—
+	 * @param area        åœ°åŸŸå…³é”®å­—ï¼Œå«4ä¸ªå­—æ®µï¼Œä¾æ¬¡ä¸º çœã€å¸‚ã€å¿ï¼ˆåŒºï¼‰ã€è¯¦ç»†åœ°å€ã€‚æ­¤å‚æ•°å¯è®¾ç½®ä¸ºç©º
+	 * @return å•†æˆ·åˆ—è¡¨
 	 */
 	List<Commodity> searchCommodities(String nameKeyword, String[] area);
 
