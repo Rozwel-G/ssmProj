@@ -3,12 +3,12 @@
 <html>
 	<head>
 		<title>Login</title>
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="js/jquery.min.js"></script>
+		<script src="/js/jquery.min.js"></script>
 		<!-- Custom Theme files -->
 		<!--theme-style-->
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<!--//theme-style-->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -28,10 +28,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
 		<!--//fonts-->
 		<!-- start menu -->
-		<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 		<script type="text/javascript" src="js/memenu.js"></script>
 		<script>$(document).ready(function(){$(".memenu").memenu();});</script>
-		<script src="js/simpleCart.min.js"> </script>
+		<script src="/js/simpleCart.min.js"> </script>
 	</head>
 	<body>
 		<!--header-->
@@ -41,7 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="head-top">
 					<div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt=""></a>
+						<a href="index.html"><img src="/images/logo.png" alt=""></a>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h1>Account</h1>
 				<div class="account-pass">
 					<div class="col-md-8 account-top">
-						<form>
+						<form action = "/user/login" method = "post">
 							<div>
 								<span>手机号</span>
 								<input type="text">

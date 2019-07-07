@@ -12,7 +12,7 @@
 		password<input type = "password" name = "password"/>
 		<input type = "submit" name = "提交"/>
 	</form>
-	<a href="/register/user">注册</a>
+	<a href="/register">注册</a>
 	<a href = "/login/shop">商家登录</a>
 </body>
 </html>

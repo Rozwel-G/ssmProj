@@ -22,16 +22,16 @@
     SHOP_DETAIL, SHOP_PHONE, OWNER_TITLE, OWNER_NAME, OWNER_PHONE, OWNER_EMAIL
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from shop
+    select SHOP_NAME
+    <!--  <include refid="Base_Column_List" />-->
+    from shop 
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from shop
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.cqu.card.model.Shop" >
+  <insert id="insert" parameterType="cn.edu.cqu.card.model.Shop" useGeneratedKeys="true" keyProperty="shopId" >
     insert into shop (SHOP_ID, SHOP_NAME, SHOP_TYPE, 
       SHOP_INTRO, SHOP_PIC, SHOP_PROVINCE, 
       SHOP_CITY, SHOP_COUNTY, SHOP_DETAIL, 
@@ -196,4 +196,20 @@
       OWNER_EMAIL = #{ownerEmail,jdbcType=VARCHAR}
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </update>
+    <select id="searchByNameKeyword" parameterType="String" resultType="cn.edu.cqu.card.model.Shop">
+    select
+  	<include refid="Base_Column_List" />
+  	from shop
+  	where SHOP_NAME like concat("%",#{value},"%")
+  </select>
+  <select id="searchByNameAndArea" resultType="cn.edu.cqu.card.model.Shop">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from shop
+  	where SHOP_NAME like concat("%",#{name},"%")
+  	  and SHOP_PROVINCE like concat("%",#{province},"%")
+  	  and SHOP_CITY like concat("%",#{city},"%")
+  	  and SHOP_COUNTY like concat("%",#{county},"%")
+  	  and SHOP_DETAIL like concat("%",#{detail},"%")
+  </select>
 </mapper>

@@ -10,6 +10,8 @@ public class ScoreLog {
     private Date scoreLogTime;
 
     private Integer scoreLogScore;
+    
+    private Float money;
 
     public Integer getScoreLogId() {
         return scoreLogId;
@@ -41,5 +43,9 @@ public class ScoreLog {
 
     public void setScoreLogScore(Integer scoreLogScore) {
         this.scoreLogScore = scoreLogScore;
+    }
+
+    public Float getMoney() {
+        return money;
     }
 }

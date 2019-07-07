@@ -17,7 +17,7 @@ public class ShopLoginServiceImpl implements ShopLoginService {
 	@Autowired
 	private ShopMapper shopMapper;
 	@Override
-	public Shop login(String staffPhone, String staffPassword) {
+	public Staff login(String staffPhone, String staffPassword) {
 		
 			
 		Staff staff = staffMapper.selectByPrimaryKey(staffPhone);
@@ -28,8 +28,9 @@ public class ShopLoginServiceImpl implements ShopLoginService {
 		else 
 		{
 			Shop shop = shopMapper.selectByPrimaryKey(staff.getShopId());
-			return shop;
+			return staff;
 		}	
 	}
+
 
 }

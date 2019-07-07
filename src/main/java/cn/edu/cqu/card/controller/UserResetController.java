@@ -16,12 +16,12 @@ public class UserResetController {
 
 	@Autowired
 	private UserResetService userResetService;
-	@RequestMapping(value = "/reset/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/menu/changepsw", method = RequestMethod.GET)
 	public String get()
 	{
-		return "UserReset";
+		return "vipreset";
 	}
-	@RequestMapping(value = "/reset/user", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/menu/changepsw", method = RequestMethod.POST)
 	public String reset(@RequestParam("oldPassword") String oldPassword, @RequestParam("firstNewPassword") String firstNewPassword, @RequestParam("secondNewPassword") String secondNewPassword, HttpSession session)
 	{
 		User user = (User) session.getAttribute("user");
@@ -29,7 +29,7 @@ public class UserResetController {
 		{
 			int  i = userResetService.reset(firstNewPassword, user);
 		}
-		return "redirect:/login/user";
+		return "redirect:/user/login";
 	}
 	
 }

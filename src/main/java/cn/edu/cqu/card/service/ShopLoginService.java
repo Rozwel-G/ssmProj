@@ -1,9 +1,10 @@
 package cn.edu.cqu.card.service;
 
-import cn.edu.cqu.card.model.Shop;
+import cn.edu.cqu.card.model.Staff;
 
 public interface ShopLoginService {
 
 	
-	Shop login(String staffPhone, String staffPassword);
+
+	Staff login(String staffPhone, String staffPassword);
 }

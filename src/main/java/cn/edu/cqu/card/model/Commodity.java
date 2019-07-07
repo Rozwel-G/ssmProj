@@ -1,73 +1,79 @@
 package cn.edu.cqu.card.model;
 
 public class Commodity {
-    private Integer comId;
+	private Integer comId;
 
-    private Integer shopId;
+	private Integer shopId;
 
-    private String comName;
+	private String comName;
 
-    private String comType;
+	private String comType;
 
-    private Float comPrice;
+	private Float comPrice;
 
-    private String comPic;
+	private String comPic;
 
-    private String comIntro;
+	private String comIntro;
 
-    public Integer getComId() {
-        return comId;
-    }
+	public Integer getComId() {
+		return comId;
+	}
 
-    public void setComId(Integer comId) {
-        this.comId = comId;
-    }
+	public void setComId(Integer comId) {
+		this.comId = comId;
+	}
 
-    public Integer getShopId() {
-        return shopId;
-    }
+	public Integer getShopId() {
+		return shopId;
+	}
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
-    }
+	public void setShopId(Integer shopId) {
+		this.shopId = shopId;
+	}
 
-    public String getComName() {
-        return comName;
-    }
+	public String getComName() {
+		return comName;
+	}
 
-    public void setComName(String comName) {
-        this.comName = comName == null ? null : comName.trim();
-    }
+	public void setComName(String comName) {
+		this.comName = comName == null ? null : comName.trim();
+	}
 
-    public String getComType() {
-        return comType;
-    }
+	public String getComType() {
+		return comType;
+	}
 
-    public void setComType(String comType) {
-        this.comType = comType == null ? null : comType.trim();
-    }
+	public void setComType(String comType) {
+		this.comType = comType == null ? null : comType.trim();
+	}
 
-    public Float getComPrice() {
-        return comPrice;
-    }
+	public Float getComPrice() {
+		return comPrice;
+	}
 
-    public void setComPrice(Float comPrice) {
-        this.comPrice = comPrice;
-    }
+	public void setComPrice(Float comPrice) {
+		this.comPrice = comPrice;
+	}
 
-    public String getComPic() {
-        return comPic;
-    }
+	public String getComPic() {
+		return comPic;
+	}
 
-    public void setComPic(String comPic) {
-        this.comPic = comPic == null ? null : comPic.trim();
-    }
+	public void setComPic(String comPic) {
+		this.comPic = comPic == null ? null : comPic.trim();
+	}
 
-    public String getComIntro() {
-        return comIntro;
-    }
+	public String getComIntro() {
+		return comIntro;
+	}
 
-    public void setComIntro(String comIntro) {
-        this.comIntro = comIntro == null ? null : comIntro.trim();
-    }
+	public void setComIntro(String comIntro) {
+		this.comIntro = comIntro == null ? null : comIntro.trim();
+	}
+
+	@Override
+	public String toString() {
+		return "Commodity [comId=" + comId + ", shopId=" + shopId + ", comName=" + comName + "]";
+	}
+
 }
