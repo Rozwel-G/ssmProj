@@ -77,12 +77,12 @@ public class NewsController {
 		try {
 			News news = new News();
 
-			HttpSession session = request.getSession();
-			Administrator admin = (Administrator)session.getAttribute("admin");
+			//HttpSession session = request.getSession();
+			//Administrator admin = (Administrator)session.getAttribute("admin");
 			
 			// 根据会话信息确定管理员电话
-			news.setAdminPhone(admin.getAdminPhone());
-
+			//news.setAdminPhone(admin.getAdminPhone());
+			news.setAdminPhone("13234567890");
 			news.setNewsTitle(title);
 			news.setNewsContent(content);
 			news.setNewsTime(new Date());

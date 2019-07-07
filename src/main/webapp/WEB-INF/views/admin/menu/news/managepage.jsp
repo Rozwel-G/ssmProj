@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<c:forEach items="${requestScope.news }" var="p">
 						<div class="col-md-6 grid_3">
 							<h3><a href="/admin/menu/news/detail/${p.newsId}">${p.newsTitle }</a></h3>
-							<img src="${p.newsPic }" class="img-responsive" alt="" />
+							<img style="height: 388px" src="${p.newsPic }" class="img-responsive" alt="" />
 
 							<div class="blog-poast-info">
 								<ul>
@@ -102,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="button" style="display:inline"><a href="/admin/menu/news/update/${p.newsId}">修改新闻</a></div>
 							<div class="button" style="display:inline"><a href="/admin/menu/news/delete/${p.newsId}?_method=delete" 
 																			onClick="return confirm('确定删除?');">删除新闻</a></div>
-						</div>
+						</div>						
 					</c:forEach>
 			
 				<div class="clearfix"> </div>

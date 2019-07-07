@@ -44,7 +44,7 @@ public class ShopInfoController {
 		Shop shop=shopService.showShops(id);
 		
 		List<Commodity> comm=commodityService.commodities(id);
-		int length = comm.size();
+		int length = comm.size()-1;
 		int commodityRandom[]=random(6,length);
 		Commodity comms[]=new Commodity[6];
 		for(int i=0;i<6;i++){
