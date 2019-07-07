@@ -24,15 +24,12 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
-<<<<<<< HEAD
-=======
     from shop 
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </select>
     <select id="selectKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
 	select
 	<include refid="Base_Column_List" />
->>>>>>> 1ad601a7f8fcc26547c64c0c3f120ee49cffcdef
     from shop 
     where SHOP_ID = #{shopId,jdbcType=INTEGER}
   </select>
