@@ -192,11 +192,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<form action="../spendingLog/time" method="post">
 							<div>
 								<span style="display: inline;">开始日期</span>
-								<input type="date" name="begin" />
+								<input type="date" name="begin" required/>
 							</div>
 							<div>
 								<span style="display: inline;">结束日期</span>
-								<input type="date" name="end" />
+								<input type="date" name="end" required/>
 							</div>
 							<input type="submit" value="点击查询" style="width:100%">
 						</form>
