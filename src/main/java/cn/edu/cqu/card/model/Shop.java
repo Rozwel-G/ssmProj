@@ -153,4 +153,5 @@ public class Shop {
 		return this.getShopId().equals(shop.getShopId());
 	}
 
+
 }

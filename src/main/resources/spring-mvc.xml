@@ -18,7 +18,6 @@
 	
 	<context:component-scan base-package="cn.edu.cqu.card.controller" />
 	
-
 	<!-- 视图 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

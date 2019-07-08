@@ -1,5 +1,6 @@
 package cn.edu.cqu.card.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +32,17 @@ public class CommodityServiceImpl implements CommodityService {
 	}
 
 	@Override
-	public boolean check(Commodity commodity) {
-		if(commodityMapper.selectByShopIdAndComName(commodity) != null) {
-			return true;
-		}else {
-			return false;
+	public boolean check(String comName,int shopId) {
+		List<Commodity> commodities=new ArrayList<Commodity>();
+		commodities=commodityMapper.selectByShopId(shopId);
+		for(Commodity e:commodities)
+		{
+			if(e.getComName().equals(comName))
+			{
+				return false;
+			}
 		}
+		return true;
 	}
-
-	@Override
-	public Commodity commodity(int commodity){
-		return commodityMapper.selectByPrimaryKey(commodity);
-	}
-
 
 }
