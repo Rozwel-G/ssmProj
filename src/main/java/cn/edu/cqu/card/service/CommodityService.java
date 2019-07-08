@@ -16,5 +16,7 @@ public interface CommodityService {
 
 	Commodity commodity(int commodityId);
 
+	boolean check(String comName, int shopId);
+
 
 }

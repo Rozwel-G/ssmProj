@@ -64,7 +64,7 @@ public class CommodityController {
 		return "redirect:/shop/menu/commodity/change";
 	}
 	
-	@PostMapping("/check")
+	@PostMapping("/check11")
 	public @ResponseBody boolean check(String comName,HttpSession session) {
 		int shopId=((Shop)session.getAttribute("shop")).getShopId();
 		return commodityService.check(comName,shopId);

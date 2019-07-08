@@ -45,4 +45,16 @@ public class CommodityServiceImpl implements CommodityService {
 		return true;
 	}
 
+	@Override
+	public boolean check(Commodity commodity) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Commodity commodity(int commodityId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

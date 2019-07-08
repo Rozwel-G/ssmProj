@@ -17,16 +17,20 @@ import cn.edu.cqu.card.service.StaffService;
 public class UpdateInfoController {
 	@Autowired
 	private StaffService staffService;
+	@Autowired
+	private ShopService shopService;
 	
 	@GetMapping("/shop/menu/staff/staffInfoUpdate")
 	public String getInfo(@RequestParam("staff") String staffNo,Model model,HttpSession session)
 	{
-		Shop shop = (Shop)session.getAttribute("shop");
-		model.addAttribute("shop", shop);
+		
 
 		Staff staff = staffService.findStaff(staffNo);
+		Shop shop = shopService.showShop(staff.getShopId());
 		model.addAttribute("staff",staff);
-		//System.out.println(staff.getStaffPhone());
+		model.addAttribute("shop", shop);
+		System.out.println(staff.getShopId());
+		System.out.println(shop.getShopName());
 		
 		return "shop/menu/staff/staffInfoUpdate";
 	}

@@ -28,6 +28,7 @@ public class ShopLoginController {
 	{
 		try {
 			Staff staff = shopLoginService.login(telephone, password);
+			System.out.println(staff.getShopId());
 			Session.setAttribute("staff", staff);
 			return "redirect:/shop/menu";
 		} catch (Exception e) {
