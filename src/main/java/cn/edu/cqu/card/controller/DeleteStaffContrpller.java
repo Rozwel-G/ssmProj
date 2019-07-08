@@ -15,10 +15,8 @@ public class DeleteStaffContrpller {
 	private StaffService staffService;
 	
 	@GetMapping("/shop/menu/staff/delete")
-	public String deleteStaff(@RequestParam("account") String staffAccount)
+	public String deleteStaff(@RequestParam("account") Staff staff)
 	{
-		Staff staff = new Staff();
-		staff.setStaffPhone(staffAccount);
 		staffService.delete(staff);
 		return "redirect:list";
 	}

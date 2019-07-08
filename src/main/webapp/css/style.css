@@ -17,6 +17,9 @@ ul{
 	text-align:center;
 	margin-top:30px;
 }
+.shopinfo > span{
+	margin:0 10px;
+}
 .btn{
 	width:100%;
 	text-align:center;

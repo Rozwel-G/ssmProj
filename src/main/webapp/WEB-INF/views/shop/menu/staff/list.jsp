@@ -68,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 						<ul class="m-menu">
 							<c:forEach items="${requestScope.staffs}" var="a">
-								<li> <a href="staffInfoUpdate?staff=${a.staffPhone }">${a.staffPhone }</a><a class="input" onclick="return confirm('你确定要删除吗？');" href="/shop/menu/staff/delete?account=${a.staffPhone }">删除</a></li>
+								<li> <a href="staffInfoUpdate?staff=${a.staffPhone }">${a.staffPhone }</a><a class="input" onclick="return confirm('你确定要删除吗？');" href="/shop/menu/staff/delete?account=${a}">删除</a></li>
 							</c:forEach>
 							
 						</ul>

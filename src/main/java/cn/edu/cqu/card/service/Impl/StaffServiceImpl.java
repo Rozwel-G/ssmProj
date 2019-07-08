@@ -28,7 +28,7 @@ public class StaffServiceImpl implements StaffService{
 
 	@Override
 	public int delete(Staff staff) {
-		return staffMapper.deleteByPrimaryKey(staff.getStaffPhone());
+		return staffMapper.delete(staff);
 	}
 
 	@Override

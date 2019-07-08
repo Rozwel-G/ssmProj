@@ -20,7 +20,7 @@ public class ShopLoginController {
 	@GetMapping(value = "/shop/login")
 	public String get()
 	{
-		return "shoplogin";
+		return "ShopLogin";
 	}
 	
 	@RequestMapping(value = "/shop/login", method = RequestMethod.POST)

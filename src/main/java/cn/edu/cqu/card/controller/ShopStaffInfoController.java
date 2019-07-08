@@ -21,8 +21,8 @@ public class ShopStaffInfoController {
 	@GetMapping("/shop/menu/staff/staffInfo")
 	public String getInfo(@RequestParam("staff") String staffNo,Model model,HttpSession session)
 	{
-		/*Shop shop = (Shop)session.getAttribute("shop");
-		model.addAttribute("shop", shop);*/
+		Shop shop = (Shop)session.getAttribute("shop");
+		model.addAttribute("shop", shop);
 
 		if(!"new".equals(staffNo))
 		{

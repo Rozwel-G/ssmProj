@@ -75,8 +75,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 			<!-- shopinfo -->
 				<div class="shopinfo">
-					<span>商家名称：${requestSession.shop.shopName }</span>
-					<span>商家位置：${requestSession.shop.shopCity }${requestSession.shop.shopProvince }</span>
+					<span>商家名称：${requestScope.shop.shopName }</span>
+					<span>商家位置：${requestScope.shop.shopCity }${requestScope.shop.shopProvince }</span>
 				</div>
 				
 				<div class="btn" style="text-align:center">

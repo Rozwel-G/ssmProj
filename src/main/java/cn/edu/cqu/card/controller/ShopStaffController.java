@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.model.Staff;
+import cn.edu.cqu.card.service.ShopService;
 import cn.edu.cqu.card.service.StaffService;
 
 @Controller
@@ -18,14 +19,15 @@ public class ShopStaffController {
 
 	@Autowired
 	private StaffService staffService;
-	
+	@Autowired
+	private ShopService shopService;
 	@GetMapping("/shop/menu/staff/list")
 	public String listStaff(Model model,HttpSession session)
 	{
-		//Shop shop = (Shop)session.getAttribute("account");
-		Shop shop = new Shop();
-		shop.setShopId(1);
+		Staff staff = (Staff)session.getAttribute("staff");
+		Shop shop = shopService.showShop(staff.getShopId());
 		List<Staff> staffs = staffService.findShopStaffs(shop);
+		session.setAttribute("shop", shop);
 		model.addAttribute("staffs",staffs);
 		//System.out.println(staffs.toString());
 		return "shop/menu/staff/list";

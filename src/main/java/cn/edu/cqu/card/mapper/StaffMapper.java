@@ -23,4 +23,6 @@ public interface StaffMapper {
 	int addStaff(@Param("staffPhone") String staffPhone,@Param("shopId")  int shopId);
 
 	List<Staff> findShopStaffs(Shop shop);
+
+	int delete(Staff staff);
 }

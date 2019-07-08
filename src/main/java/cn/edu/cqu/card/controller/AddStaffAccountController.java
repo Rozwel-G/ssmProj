@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import cn.edu.cqu.card.model.Shop;
 import cn.edu.cqu.card.model.Staff;
 import cn.edu.cqu.card.service.StaffService;
 
@@ -38,9 +39,9 @@ public class AddStaffAccountController {
 		}
 		//System.out.println(newFile.getPath());
 		
-		//Shop shop = (Shop) session.getAttribute("account");
-		//Integer shopId = shop.getShopId();
-		Integer shopId = 1;
+		Shop shop = (Shop) session.getAttribute("shop");
+		Integer shopId = shop.getShopId();
+		//Integer shopId = 1;
 		staff.setShopId(shopId);
 		staff.setStaffPic(staff.getStaffPhone()+".jpg");
 		staffService.insert(staff);

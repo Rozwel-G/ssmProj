@@ -33,6 +33,10 @@
     delete from staff
     where STAFF_PHONE = #{staffPhone,jdbcType=CHAR}
   </delete>
+  <delete id="delete" parameterType="cn.edu.cqu.card.model.Staff" >
+  	delete from staff
+  	where STAFF_PHONE = #{staffPhone,jdbcType=CHAR} and SHOP_ID = #{shopId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="cn.edu.cqu.card.model.Staff" >
     insert into staff (STAFF_PHONE, SHOP_ID, STAFF_PASSWORD, 
       STAFF_TYPE, STAFF_PIC)
