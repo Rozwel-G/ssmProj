@@ -79,7 +79,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"> </div>
 				 </div>
 			</div>
+			<div class="center">
+					<ul class="divide">
+						<li id = "sel">
+							
+						</li>
+					</ul>	
+				</div>
+		<script type="text/javascript">
+					function goPage(num){
+						var items = $(".container .col-md-6").length;
+						num  = (num<=0)?1:num;
+						var nums = Math.ceil(items / 4); ;
+						num = (num>nums)?nums:num;
+						console.log(num);
+						var startRow = (num-1)*4+1;
+						var endRow = num*4;
 
+						endRow = (endRow>items)?items:endRow;
+
+						for(var i=1;i<(items+1);i++)
+						{
+							var irow = $('.container .col-md-6').get(i-1);
+							if(i>=startRow&&i<=endRow)
+							{
+								irow.style.display = "block";
+							}
+							else{
+								irow.style.display = "none";
+							}
+
+						}
+						var tempStr = "<a href=\"#\" onclick=\"goPage("+(num-1)+")\" class=\"tag\"><<</a><a href=\"#\" class=\"";
+						if(num==1)
+						{
+							tempStr+="active";
+						}
+						
+						tempStr+="\" onclick=\"goPage(1)\">1</a>";
+						for(var i=1;i<=nums-1;i++)
+						{
+							tempStr+="<a href=\"#\" onclick=\"goPage("+(i+1)+")\" class=\"";
+							if(num==i+1)
+								tempStr+="active";
+							
+							tempStr+="\">"+(i+1)+"</a>";
+						}
+						tempStr+="<a href=\"#\" onclick=\"goPage("+(num+1)+")\" class=\"tag\">>></a>";
+						document.getElementById("sel").innerHTML=tempStr;
+					};
+				</script>
+				<script type="text/javascript">
+					window.onload = goPage(1);
+				</script>
 		<!--//content-->
 		<jsp:include page="../../foot.jsp" flush="true"></jsp:include>
 	</body>

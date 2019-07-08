@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<div class=" rsidebar span_1_of_right" style="height:400px">
 						<div class="of-left">
-							<h3 class="cate of-left-reol">Categories</h3>
+							<h3 class="cate of-left-reol">员工列表</h3>
 							<div class="of-right-reol">
 							<a href="staffInfo?staff=new">添加员工</a>
 							</div>

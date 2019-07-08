@@ -26,6 +26,8 @@ public class ShopStaffController {
 	{
 		Staff staff = (Staff)session.getAttribute("staff");
 		Shop shop = shopService.showShop(staff.getShopId());
+		session.setAttribute("shop", shop);
+		System.out.println(shop.getShopCounty());
 		List<Staff> staffs = staffService.findShopStaffs(shop);
 		model.addAttribute("staffs",staffs);
 		//System.out.println(staffs.toString());
