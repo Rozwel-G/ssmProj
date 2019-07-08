@@ -39,9 +39,10 @@ h1,h2,h3,h4,h5,h6,label,p{
 .imgdiv{
 	position:absolute;
 	right:200px;
-	height:150px;
+	width:180px;
+	height:200px;
 	display:inline-block;
-	width:19%;
+	width:180px;
 }
 .imgdiv >div{
 	border:2px solid black;
@@ -53,7 +54,7 @@ h1,h2,h3,h4,h5,h6,label,p{
   max-height:100%;
 }
 .inputdiv > div{
-	margin:5px 0;
+	margin:15px 0;
 }
 .inputdiv span{
 	display:inline-block;
